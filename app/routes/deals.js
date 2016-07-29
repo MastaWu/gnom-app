@@ -17,6 +17,7 @@ module.exports = function(app, express, con) {
         })
         .delete(function(req, res) {
             // Insert mysql statement to delete a specific record
+            res.json({ message: "Item was deleted!"});
         });
     
     app.use('/api', dealRouter);
