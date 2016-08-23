@@ -1,36 +1,30 @@
 // server.js
 
 // Pulling in node modules
-var express             = require('express');                       // express
-var app                 = express();
-var bodyParser          = require('body-parser');                   // body-parser
-var mysql               = require('mysql');                         // mysql
-var morgan              = require('morgan');
+const express             = require('express');                       // express
+const app                 = express();
+const bodyParser          = require('body-parser');                   // body-parser
+const mysql               = require('mysql');                         // mysql
+const morgan              = require('morgan');
+const appConfig           = require('./config/config');               // load configurations
+const port = process.env.PORT || 8080;                                // http port
 
-var config              = require('./config/config');               // load configurations
-conf = new config();
+const databaseInit        = require('./app/database/database');
+databaseInit.initDB(appConfig);
 
-// port
-var port = process.env.PORT || 8080;
-
-var con = mysql.createConnection({
-    host: conf.database.host,
-    port: conf.database.port,
-    user: conf.database.user,
-    password: conf.database.password
-});
-
-con.connect(function(err) {
-    if(err) {
-        console.log('Error connecting to the database.');
-        return;
-    }
-    console.log('Connection established.');
-});
+// con.connect(function(err) {
+//     if(err) {
+//         console.log('Error connecting to the database.');
+//         return;
+//     }
+//     console.log('Connection to database established.');
+// });
 
 // setting up bodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// setting up where static files will be served
 app.use(express.static(__dirname + '/public'));
 
 // log all requests to the console
@@ -45,8 +39,8 @@ app.use(function(req, res, next) {
 });
 
 // Register our routes
-// All routes will begin with /api
-indexRoute = require('./app/routes/index.js')(app, express, con);
+const routes = require('./app/routes/');
+app.use('/', routes);
 
 app.get('*', function(req, res){
     console.log("User requested main page.");
@@ -55,4 +49,4 @@ app.get('*', function(req, res){
 
 // START SERVER
 app.listen(port);
-console.log('Server has started at port: ' + port);
+console.log('Server has started at port: ' + port + 'at: ' + new Date());

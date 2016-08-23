@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS restaurant_review (
 CREATE TABLE IF NOT EXISTS deal (
 	deal_id INT NOT NULL AUTO_INCREMENT,
     restaurant_id INT NOT NULL,
+    deal_name VARCHAR(50) NOT NULL,
     meal_type VARCHAR(50) NOT NULL,
     food_type VARCHAR(50) NOT NULL,
     date_start DATE NOT NULL,
