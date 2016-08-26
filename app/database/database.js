@@ -7,7 +7,7 @@ module.exports = (function(){
     var database = {
         initDB : initDB,
         query : query,
-        disconnect : disconnect()
+        disconnect : disconnect
     };
 
     function initDB(databaseConfig) {
@@ -39,5 +39,4 @@ module.exports = (function(){
     }
     
     return database;
-    
 })();

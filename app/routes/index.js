@@ -1,8 +1,8 @@
-module.exports = function(con) {
+module.exports = function() {
 
     const routes = require('express').Router();
 
-    const deals = require('./deals/')(con);
+    const deals = require('./deals/');
 
     routes.use('/deals', deals);
 

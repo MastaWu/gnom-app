@@ -7,18 +7,10 @@ const bodyParser          = require('body-parser');                   // body-pa
 const mysql               = require('mysql');                         // mysql
 const morgan              = require('morgan');
 const appConfig           = require('./config/config');               // load configurations
+const database            = require('./app/database/database');
 const port = process.env.PORT || 8080;                                // http port
 
-const databaseInit        = require('./app/database/database');
-databaseInit.initDB(appConfig);
-
-// con.connect(function(err) {
-//     if(err) {
-//         console.log('Error connecting to the database.');
-//         return;
-//     }
-//     console.log('Connection to database established.');
-// });
+database.initDB(appConfig);
 
 // setting up bodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -49,4 +41,4 @@ app.get('*', function(req, res){
 
 // START SERVER
 app.listen(port);
-console.log('Server has started at port: ' + port + 'at: ' + new Date());
+console.log('Server has started at port: ' + port + ' \nDate: ' + new Date());
