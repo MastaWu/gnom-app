@@ -1,5 +1,6 @@
 'use strict';
 
+// This sets up database so that our queries to the database are cleaner.
 module.exports = (function(){
 
     var mysql    = require('mysql');
@@ -8,6 +9,7 @@ module.exports = (function(){
         initDB : initDB,
         query : query,
         disconnect : disconnect,
+        connection : connection
     };
 
     function initDB(databaseConfig) {
@@ -36,8 +38,12 @@ module.exports = (function(){
 
             console.log('Using database pool, currently using: ' + connection.threadId);
 
-            connection.query(query, function(err, res) {
-                disconnect();
+            connection.query(query, function (err, res)
+            {
+                if(err) {
+                    console.log(err);
+                    console.log("There was an error querying the database.");
+                };
                 callback(res);
             });
 
@@ -62,6 +68,13 @@ module.exports = (function(){
             GLOBAL.pool.end();
         }
     };
+
+    function connection() {
+        if(GLOBAL.pool) {
+            console.log("Grabbing pool connection.");
+            return GLOBAL.pool;
+        }
+    }
 
     return database;
 })();

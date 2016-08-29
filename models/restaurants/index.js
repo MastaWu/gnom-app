@@ -1,10 +1,12 @@
+// GET all restaurants
 var restaurants = require('express').Router();
 var getAllRestaurantDeals = require('./getAllRestaurants');
+var getRestaurant = require('./getRestaurant');
 
+// Get all restaurants available from the database
 restaurants.get('/all', getAllRestaurantDeals);
-restaurants.get('/', function(req, res) {
-    console.log("Someone is retrieving restaurants.");
-    res.status(202).json({ message : "This is where you retrieve restaurants!" });
-});
+
+// Retrieve the restaurant from the database with id from req.params
+restaurants.get('/:id', getRestaurant);
 
 module.exports = restaurants;

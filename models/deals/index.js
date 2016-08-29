@@ -1,10 +1,12 @@
+// GET all deals
 var deals = require('express').Router();
 var getAllDeals = require('./getAllDeals');
+var getDeal = require('./getDeal');
 
+// Retrieve all deals available from the database
 deals.get('/all', getAllDeals);
-deals.get('/', function(req, res){
-    console.log("Someone is retrieving deals!");
-    res.status(200).json({ message : "This is where you retrieve deals!!" });
-});
+
+// Retrieve the deal from the database with id from req.params
+deals.get('/:id', getDeal);
 
 module.exports = deals;
