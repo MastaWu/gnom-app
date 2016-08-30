@@ -3,7 +3,7 @@ var deals = require('../models/deals/index');
 var restaurants = require('../models/restaurants/index');
 
 routes.use('/deal', deals);
-routes.use('/restaurant', restaurants)
+routes.use('/restaurant', restaurants);
 
 routes.get('/', function(req, res){
     res.sendfile('landingpage.html', { root: __dirname + "public/" });

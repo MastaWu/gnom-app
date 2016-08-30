@@ -1,6 +1,6 @@
 // GET deal where id is given from request parameters
 module.exports = function getDeal(req, res) {
-    var database = require('../../database/database');
+    var database = require('.././database');
     var queryValues = [];
 
     // req.param is used for get methods

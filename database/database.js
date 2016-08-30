@@ -1,7 +1,6 @@
-'use strict';
-
 // This sets up database so that our queries to the database are cleaner.
 module.exports = (function(){
+    'use strict';
 
     var mysql    = require('mysql');
     var databaseConfig = require('../config/config');
@@ -21,8 +20,8 @@ module.exports = (function(){
             port: databaseConfig.database.port,
             user: databaseConfig.database.user,
             password: databaseConfig.database.password
-        })
-    };
+        });
+    }
 
     function query(query, callback) {
         GLOBAL.pool.getConnection(function(err, connection) {
@@ -43,7 +42,7 @@ module.exports = (function(){
                 if(err) {
                     console.log(err);
                     console.log("There was an error querying the database.");
-                };
+                }
                 callback(res);
             });
 
@@ -60,14 +59,14 @@ module.exports = (function(){
                 return;
             });
         });
-    };
+    }
 
     function disconnect() {
         if (GLOBAL.pool) {
             console.log("Disconnecting from database.");
             GLOBAL.pool.end();
         }
-    };
+    }
 
     function connection() {
         if(GLOBAL.pool) {
