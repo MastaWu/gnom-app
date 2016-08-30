@@ -39,7 +39,7 @@ app.use('/api', routes);
 // TODO: Create a 404 page.
 app.all('*', function(req, res){
     console.log("User requested random page.");
-    res.status(404).json({ message : "You will be redirected, because the route could not be identified."});
+    res.sendfile('landingpage.html', { root: __dirname + "/views/" });
 });
 
 // START SERVER

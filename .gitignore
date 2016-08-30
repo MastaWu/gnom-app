@@ -11,6 +11,7 @@
 .idea/jsLibraryMappings.xml
 .idea/
 config/
+public/build/
 
 # Sensitive or high-churn files:
 .idea/dataSources.ids
@@ -84,3 +85,4 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+

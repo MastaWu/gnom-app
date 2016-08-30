@@ -6,7 +6,6 @@ routes.use('/deal', deals);
 routes.use('/restaurant', restaurants);
 
 routes.get('/', function(req, res){
-    res.sendfile('landingpage.html', { root: __dirname + "public/" });
     res.status(200).json({ message: "Welcome!" });
 });
 
