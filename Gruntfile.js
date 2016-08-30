@@ -61,12 +61,14 @@ module.exports = function(grunt) {
             }
         },
 
+        // cleans build directory
         clean: {
             folder: ['./public/build/**'],
             css: ['./public/build/dev/min/css/*.css'],
             js: ['./public/build/dev/min/js/*.js']
         },
 
+        // watch our static files for change, and then run our tasks on them
         watch: {
             css: {
                 files: ['./public/src/css/*.css'],
@@ -78,6 +80,7 @@ module.exports = function(grunt) {
             }
         },
 
+        // this allows us to run two concurrent tasks: nodemon, and watch
         concurrent: {
             options: {
                 logConcurrentOutput: true
