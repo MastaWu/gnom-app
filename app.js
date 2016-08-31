@@ -36,7 +36,6 @@ app.use('/api', routes);
 // TODO: Create a 404 page.
 app.all('*', function(req, res){
     console.log("User requested random page.");
-    res.redirect('/');
 });
 
 // START SERVER
