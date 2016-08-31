@@ -8,7 +8,7 @@ module.exports = function getRestaurant(req, res) {
     console.log(queryValues);
 
     var getDealsQuery = {
-        sql: "SELECT * FROM gnom.restaurant WHERE restaurant_id = ?;",
+        sql: "SELECT * FROM gnomApp.restaurant WHERE restaurant_id = ?;",
         values: queryValues
     };
 

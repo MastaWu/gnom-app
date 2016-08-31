@@ -2,7 +2,7 @@
 module.exports = function getAllDeals(req, res) {
     var database = require('.././database');
     var getAllDealsQuery = {
-        sql: "SELECT * FROM gnom.deal;"
+        sql: "SELECT * FROM gnomApp.deal;"
     };
 
     database.query(getAllDealsQuery, function (results) {

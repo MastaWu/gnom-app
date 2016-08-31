@@ -2,7 +2,7 @@
 module.exports = function getAllRestaurants(req, res) {
     var database = require('.././database');
     var getAllRestaurantsQuery = {
-        sql: "SELECT * FROM gnom.restaurant;"
+        sql: "SELECT * FROM gnomApp.restaurant;"
     };
 
     database.query(getAllRestaurantsQuery, function (results) {

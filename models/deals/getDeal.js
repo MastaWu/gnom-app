@@ -8,7 +8,7 @@ module.exports = function getDeal(req, res) {
     console.log(queryValues);
 
     var getDealQuery = {
-        sql: "SELECT * FROM gnom.deal WHERE deal_id = ?;",
+        sql: "SELECT * FROM gnomApp.deal WHERE deal_id = ?;",
         values: queryValues
     };
 
