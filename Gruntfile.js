@@ -104,4 +104,5 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['nodemon']);
     grunt.registerTask('clean' ['clean']);
     grunt.registerTask('dev', ['clean', 'jshint', 'ngAnnotate', 'uglify', 'cssmin', 'concurrent']);
+    grunt.registerTask('production', ['clean', 'jshint', 'ngAnnotate', 'uglify', 'cssmin']);
 };

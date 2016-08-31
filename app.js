@@ -17,9 +17,6 @@ database.initDB(appConfig);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Setting up where static files will be served
-app.use('/static', express.static(__dirname + '/public'));
-
 // Log all requests to the console
 app.use(morgan('dev'));
 
@@ -39,7 +36,7 @@ app.use('/api', routes);
 // TODO: Create a 404 page.
 app.all('*', function(req, res){
     console.log("User requested random page.");
-    res.sendfile('landingpage.html', { root: __dirname + "/views/" });
+    res.redirect('/');
 });
 
 // START SERVER
