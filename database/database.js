@@ -19,7 +19,8 @@ module.exports = (function(){
             host: databaseConfig.database.host,
             port: databaseConfig.database.port,
             user: databaseConfig.database.user,
-            password: databaseConfig.database.password
+            password: databaseConfig.database.password,
+            database: databaseConfig.database.database
         });
     }
 
