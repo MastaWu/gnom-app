@@ -23,7 +23,8 @@ module.exports = function(grunt) {
                     "./node_modules/**",
                     "./build/**",
                     "./Gruntfile.js",
-                    "./test/**"
+                    "./test/**",
+                    "./public/src/js/landing/jqBootstrapValidation.js"
                 ],
                 reporter: require('jshint-stylish')
             },
@@ -47,7 +48,8 @@ module.exports = function(grunt) {
         uglify: {
             dev: {
                 files: {
-                    'public/build/dev/min/js/app.min.js': ['public/src/js/app.js']
+                    'public/build/dev/min/js/app.min.js': ['public/src/js/*.js'],
+                    'public/build/dev/min/js/landing/landing.min.js': ['public/src/js/landing/*.js']
                 }
             }
         },
@@ -56,8 +58,18 @@ module.exports = function(grunt) {
         cssmin: {
             target: {
                 files: {
-                    'public/build/dev/min/css/index.min.css': ['public/src/**/*.css']
+                    'public/build/dev/min/css/index.min.css': ['public/src/css/*.css'],
+                    'public/build/dev/min/css/landing/agency.min.css': ['public/src/css/landing/*.css']
                 }
+            }
+        },
+
+        // copy the rest of the static files so that all static content will be deployed from build
+        copy: {
+            main: {
+                files: [
+                    { expand: true, cwd: 'public/src/', src: ['libs/**'], dest: 'public/build/dev/'}
+                ]
             }
         },
 
@@ -75,8 +87,12 @@ module.exports = function(grunt) {
                 task: ['clean:css', 'cssmin']
             },
             js: {
-                files: ['./public/src/**/*.js'],
+                files: ['./public/src/js/*.js'],
                 tasks: ['clean:js', 'jshint', 'ngAnnotate', 'uglify']
+            },
+            libs: {
+                files: ['./public/src/libs/'],
+                tasks: ['copy']
             }
         },
 
@@ -95,6 +111,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-nodemon');
@@ -103,6 +120,6 @@ module.exports = function(grunt) {
     // create tasks
     grunt.registerTask('default', ['nodemon']);
     grunt.registerTask('clean' ['clean']);
-    grunt.registerTask('dev', ['clean', 'jshint', 'ngAnnotate', 'uglify', 'cssmin', 'concurrent']);
-    grunt.registerTask('production', ['clean', 'jshint', 'ngAnnotate', 'uglify', 'cssmin']);
+    grunt.registerTask('dev', ['clean', 'jshint', 'ngAnnotate', 'uglify', 'cssmin', 'copy', 'concurrent']);
+    grunt.registerTask('production', ['clean', 'jshint', 'ngAnnotate', 'uglify', 'cssmin', 'copy']);
 };
