@@ -266,7 +266,7 @@ header {
     color: #fff;
     height: 90em;
     background-attachment: scroll;
-    background-image: url(../../../../../build/dev/libs/img/landing/lamb-chop-header-bg.jpg);
+    background-image: url(http://www.jellyhousefoodco.com/resources/lamb.jpg);
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -655,7 +655,7 @@ aside.clients img {
 
 section#contact {
     background-color: #222;
-    background-image: url(../../../../../build/dev/libs/img/landing/map-image.png);
+    background-image: url(http://cdn.free-power-point-templates.com/articles/wp-content/uploads/2012/02/world-map-powerpoint-clipart-580x252.png);
     background-position: center;
     background-repeat: no-repeat;
 }
