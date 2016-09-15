@@ -1,4 +1,10 @@
-/* This is a test. */
-.test {
-    color: red;
+.page-container {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.page {
+    margin-top: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
 }

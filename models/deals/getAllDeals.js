@@ -1,6 +1,8 @@
 // GET all deals available from the database.
 module.exports = function getAllDeals(req, res) {
-    var database = require('.././database');
+    console.log("Getting all deals");
+
+    var database = require('../../database/database');
     var getAllDealsQuery = {
         sql: "SELECT * FROM gnomApp.deal;"
     };

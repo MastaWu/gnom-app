@@ -12,11 +12,17 @@ CREATE TABLE IF NOT EXISTS restaurant (
     
 CREATE TABLE IF NOT EXISTS user (
 	user_id INT NOT NULL AUTO_INCREMENT,
-	user_name VARCHAR(50) NOT NULL,
-	user_password VARCHAR(50) NOT NULL,
+	user_email VARCHAR(255) NOT NULL,
+	user_password CHAR(128) NOT NULL,
 	user_first_name VARCHAR(50) NULL,
 	user_last_name VARCHAR(50) NULL,
-	user_email VARCHAR(50) NOT NULL,
+	user_roles VARCHAR(50) NOT NULL,
+	facebook_id varchar(255),
+  facebook_token varchar(255),
+  facebook_email varchar(255),
+	google_id varchar(255),
+  google_token varchar(255),
+  google_email varchar(255),
 	PRIMARY KEY (user_id)
 	);
     

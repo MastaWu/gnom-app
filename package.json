@@ -12,11 +12,19 @@
     "test": "grunt dev"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.0.1",
     "express": "~4.0.0",
+    "jsonwebtoken": "^7.1.9",
     "morgan": "^1.7.0",
     "mysql": "^2.11.1",
-    "nodemon": "^1.9.2"
+    "nodemon": "^1.9.2",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-jwt": "^2.1.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

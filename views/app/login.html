@@ -1,0 +1,49 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Login</h2>
+            <span flex></span>
+            <md-button class="md-icon-button"
+                       ng-click="cancel()">
+                <md-icon md-svg-src="" aria-label="Cancel"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <form name="accountLogin">
+        <md-input-container class="md-block">
+            <label>USERNAME</label>
+            <input ng-model="login.username"
+                   type="text"
+                   name="username"
+                   minlength="4"
+                   maxlength="100"
+                   required>
+        </md-input-container>
+        <md-input-container md-no-float class="md-block">
+            <label>PASSWORD</label>
+            <input ng-model="login.password"
+                   type="password"
+                   name="password">
+        </md-input-container>
+        <md-button
+                type="button"
+                ng-click="register()">
+            Not a member?
+        </md-button>
+        <span flex></span>
+        <md-button
+                type="button"
+                ng-click="login.cancel()">
+            Cancel
+        </md-button>
+        <md-button
+                type="submit"
+                md-autofocus
+                class="md-raised md-primary"
+                ng-click="login.login()">
+            Login
+        </md-button>
+        </form>
+    </md-dialog-content>
+</md-dialog>

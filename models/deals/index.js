@@ -10,3 +10,4 @@ deals.get('/all', getAllDeals);
 deals.get('/:id', getDeal);
 
 module.exports = deals;
+

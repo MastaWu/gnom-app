@@ -1,11 +1,11 @@
 // app.js
 
 // Pulling in node modules
-var express             = require('express');                       // express
+var express             = require('express');                       // express for basic http requests
 var app                 = express();
-var bodyParser          = require('body-parser');                   // body-parser
-var mysql               = require('mysql');                        // mysql
-var morgan              = require('morgan');
+var bodyParser          = require('body-parser');                   // body-parser for body messages
+var morgan              = require('morgan');                        // morgan for request logging
+var passport            = require('passport');                      // passport for authentication
 var appConfig           = require('./config/config');               // load configurations
 var database            = require('./database/database');
 var port                = process.env.PORT || 8080;                 // http port
@@ -16,6 +16,8 @@ database.initDB(appConfig);
 // Setting up bodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(passport.initialize());
 
 // Log all requests to the console
 app.use(morgan('dev'));

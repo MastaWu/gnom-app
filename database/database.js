@@ -14,7 +14,7 @@ module.exports = (function(){
     function initDB(databaseConfig) {
         console.log(databaseConfig.database.host);
         
-        GLOBAL.pool = mysql.createPool ({
+        global.pool = mysql.createPool ({
             connectionLimit: 100,
             host: databaseConfig.database.host,
             port: databaseConfig.database.port,
@@ -25,15 +25,10 @@ module.exports = (function(){
     }
 
     function query(query, callback) {
-        GLOBAL.pool.getConnection(function(err, connection) {
+        global.pool.getConnection(function(err, connection) {
             if(err) {
-                res.json(
-                    {
-                        "code": 100,
-                        "status": "Error in connection to database"
-                    }
-                );
-                return;
+                console.log(err);
+                throw err;
             }
 
             console.log('Using database pool, currently using: ' + connection.threadId);
@@ -63,16 +58,16 @@ module.exports = (function(){
     }
 
     function disconnect() {
-        if (GLOBAL.pool) {
+        if (global.pool) {
             console.log("Disconnecting from database.");
-            GLOBAL.pool.end();
+            global.pool.end();
         }
     }
 
     function connection() {
-        if(GLOBAL.pool) {
+        if(global.pool) {
             console.log("Grabbing pool connection.");
-            return GLOBAL.pool;
+            return global.pool;
         }
     }
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<link>
+    <meta charset="UTF-8">
+    <title>Tomorrow</title>
+    <base href="/">
+
+    <!-- Load angular-material CSS file -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+
+    <!-- Load CSS Files -->
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/animation.css">
+
+</head>
+<body ng-app="tomorrow-app" layout="column">
+
+    <md-toolbar layout="row" md-whiteframe="4" ng-controller="toolbarCtrl as toolbar">
+        <div flex></div>
+        <md-button ng-click="toolbar.go('/')">HOME</md-button>
+        <md-button ng-show="currentUserSignedIn" ng-click="toolbar.go('/about')">ABOUT</md-button>
+        <md-button ng-show="currentUserSignedIn" ng-click="toolbar.go('/faq')">FAQ</md-button>
+        <md-button ng-hide="currentUserSignedIn" ng-click="toolbar.showLogin()">Login</md-button>
+        <md-button ng-show="currentUserSignedIn" ng-click="toolbar.logout()">Logout</md-button>
+    </md-toolbar>
+
+    <div ng-view class="container slide"></div>
+
+    <!-- Set-up AngularJS 1.4.5 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+
+    <!-- Set-up Javascript files -->
+    <script src="/assets/js/app.js"></script>
+
+    <!-- Add controllers -->
+    <script src="/assets/js/controller/homeCtrl.js"></script>
+    <script src="/assets/js/controller/loginCtrl.js"></script>
+    <script src="/assets/js/controller/navigationCtrl.js"></script>
+    <script src="/assets/js/controller/toolbarCtrl.js"></script>
+    <script src="/assets/js/controller/faqCtrl.js"></script>
+    <script src="/assets/js/controller/aboutCtrl.js"></script>
+
+    <!-- Add services -->
+    <script src="/assets/js/service/userService.js"></script>
+    <script src="/assets/js/service/homeService.js"></script>
+    <script src="/assets/js/service/aboutService.js"></script>
+
+    <!-- Add directives -->
+    <script src="/assets/js/directive/usernameExists.js"></script>
+</body>
+</html>
