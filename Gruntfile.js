@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         uglify: {
             dev: {
                 files: {
-                    'public/dist/js/app.min.js': ['public/src/js/*.js'],
+                    'public/dist/js/app.min.js': ['public/src/js/**/*.js'],
                     'public/dist/js/landing/landing.min.js': ['public/src/js/landing/*.js']
                 }
             }

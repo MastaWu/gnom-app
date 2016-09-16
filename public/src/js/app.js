@@ -10,12 +10,12 @@
         'ngStorage',
         'ngAnimate'
     ])
-        .config(config)
+        .config(config);
         //.run(run);
 
     function config($routeProvider, $httpProvider, $locationProvider){
 
-        $routeProvider.when('/', {
+        $routeProvider.when('/api/', {
             templateUrl: '/views/home.html',
             controller: 'homeCtrl',
             controllerAs: 'home'
