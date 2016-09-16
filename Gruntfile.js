@@ -13,6 +13,14 @@ module.exports = function(grunt) {
             }
         },
 
+        targethtml: {
+            dist: {
+                files: {
+                    'public/dist/index.html': 'views/index.html'
+                }
+            }
+        },
+
         // jshint to validate js files
         jshint: {
             files: [
@@ -68,7 +76,8 @@ module.exports = function(grunt) {
         copy: {
             main: {
                 files: [
-                    { expand: true, cwd: 'public/src/', src: ['libs/**'], dest: 'public/dist/'}
+                    { expand: true, cwd: 'public/src/', src: ['img/**'], dest: 'public/dist/'},
+                    { expand: true, cwd: 'views/', src: ['app/**'], dest: 'public/dist/'}
                 ]
             }
         },
@@ -116,10 +125,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-targethtml');
 
     // create tasks
     grunt.registerTask('default', ['nodemon']);
     grunt.registerTask('clean' ['clean']);
     grunt.registerTask('dev', ['clean', 'jshint', 'ngAnnotate', 'uglify', 'cssmin', 'copy', 'concurrent']);
-    grunt.registerTask('production', ['clean', 'jshint', 'ngAnnotate', 'uglify', 'cssmin', 'copy']);
+    grunt.registerTask('production', ['clean', 'jshint', 'ngAnnotate', 'uglify', 'cssmin', 'copy', 'targethtml']);
 };
