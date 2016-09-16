@@ -1,5 +1,5 @@
 angular.module('tomorrow-app')
-    .directive('usernameExists', function($http){
+    .directive('usernameExists', ['$http', function($http){
         return {
             require: 'ngModel',
             link: function(scope, element, attr, ngModel){
@@ -11,4 +11,4 @@ angular.module('tomorrow-app')
                 };
             }
         };
-    });
+    }]);

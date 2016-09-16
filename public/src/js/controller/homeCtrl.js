@@ -1,4 +1,5 @@
 (function(){
+        homeController.$inject = ['homeService'];
      angular.module('tomorrow-app')
          .controller('homeCtrl', homeController);
         

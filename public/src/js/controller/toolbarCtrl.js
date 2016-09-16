@@ -1,4 +1,5 @@
 (function(){
+    toolbarController.$inject = ['$mdDialog', '$location', '$rootScope', 'userService'];
     angular.module('tomorrow-app')
         .controller('toolbarCtrl', toolbarController);
     

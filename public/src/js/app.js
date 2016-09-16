@@ -1,6 +1,8 @@
 (function(){
     'use strict';
     
+    config.$inject = ['$routeProvider', '$httpProvider', '$locationProvider'];
+    run.$inject = ['$rootScope', '$http', '$location', '$localStorage'];
     angular.module('tomorrow-app',[
         'ngRoute',
         'ngMaterial',

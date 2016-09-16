@@ -1,4 +1,5 @@
 (function(){
+    aboutService.$inject = ['$http'];
     angular.module('tomorrow-app')
         .service('aboutService', aboutService);
 
@@ -13,6 +14,6 @@
                 response.role = res.data;
                 return response;
             });
-        }
+        };
     }
 })();

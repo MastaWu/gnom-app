@@ -1,6 +1,5 @@
 (function(){
-    'use strict';
-
+    loginController.$inject = ['$mdDialog', '$location', 'userService'];
     angular.module('tomorrow-app')
         .controller('loginCtrl', loginController);
 

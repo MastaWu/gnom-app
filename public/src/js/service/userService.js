@@ -1,6 +1,7 @@
 (function(){
     'use strict';
 
+    service.$inject = ['$http', '$localStorage', '$rootScope'];
     angular.module('tomorrow-app')
         .factory('userService', service);
 

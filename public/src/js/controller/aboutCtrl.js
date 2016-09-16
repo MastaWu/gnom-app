@@ -1,4 +1,5 @@
 (function(){
+    aboutController.$inject = ['aboutService'];
     angular.module('tomorrow-app')
         .controller('aboutCtrl', aboutController);
     
