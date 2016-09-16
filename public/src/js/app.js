@@ -11,7 +11,7 @@
         'ngAnimate'
     ])
         .config(config)
-        .run(run);
+        //.run(run);
 
     function config($routeProvider, $httpProvider, $locationProvider){
 
