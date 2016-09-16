@@ -1,7 +1,6 @@
 (function(){
     toolbarController.$inject = ['$mdDialog', '$location', '$rootScope', 'userService'];
-    angular.module('tomorrow-app')
-        .controller('toolbarCtrl', toolbarController);
+    angular.module('tomorrow-app').controller('toolbarCtrl', toolbarController);
     
     function toolbarController($mdDialog, $location, $rootScope, userService){
         var vm = this;
