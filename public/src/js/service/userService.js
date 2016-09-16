@@ -1,17 +1,17 @@
 (function(){
     'use strict';
 
-    service.$inject = ['$http', '$localStorage', '$rootScope'];
+    userService.$inject = ['$http', '$localStorage', '$rootScope'];
     angular.module('tomorrow-app')
-        .factory('userService', service);
+        .service('userService', userService);
 
-    function service($http, $localStorage, $rootScope){
-        var service = {};
+    function userService($http, $localStorage, $rootScope){
+        var userService = {};
 
-        service.login = Login;
-        service.logout = Logout;
+        userService.login = Login;
+        userService.logout = Logout;
         
-        return service;
+        return userService;
 
         function Login(username, password, callback) {
             
