@@ -5,5 +5,5 @@
     function faqController() {
         var vm = this;
         vm.pageClass = 'page-faq';
-    };
+    }
 })();

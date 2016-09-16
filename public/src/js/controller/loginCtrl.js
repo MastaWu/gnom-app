@@ -14,7 +14,7 @@
         
         function initController() {
             userService.logout();
-        };
+        }
         
         function login() {
             vm.loading = true;
@@ -28,10 +28,10 @@
                     vm.loading = false;
                 }
             });
-        };
+        }
         
         function cancel() {
             $mdDialog.hide();
-        };
+        }
     }
 })();

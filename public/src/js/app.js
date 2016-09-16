@@ -35,7 +35,7 @@
 
         // Use HTML5 History API
         $locationProvider.html5Mode(true);
-    };
+    }
 
     function run($rootScope, $http, $location, $localStorage){
         // keep user logged in after page refresh
@@ -52,5 +52,5 @@
                 $location.path('/login');
             }
         });
-    };
+    }
 })();

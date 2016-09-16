@@ -12,5 +12,5 @@
             vm.greeting = data;
             console.log(JSON.stringify(vm.greeting));
         });
-    };
+    }
 })();

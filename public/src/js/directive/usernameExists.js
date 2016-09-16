@@ -6,7 +6,7 @@ angular.module('tomorrow-app')
                 ngModel.$asyncValidators.usernameExists = function(username){
                     return $http.get("/user/checkUsernameExists/" + ngModel.username).then(function(res){
                         console.log("Username: " + username);
-                            return res.data != true ? false : true;
+                            return res.data === true;
                         });
                 };
             }
