@@ -16,19 +16,19 @@
     function config($routeProvider, $httpProvider, $locationProvider){
 
         $routeProvider.when('/', {
-            templateUrl: '/assets/views/home.html',
+            templateUrl: '/views/home.html',
             controller: 'homeCtrl',
             controllerAs: 'home'
         }).when('/about', {
-            templateUrl: '/assets/views/about.html',
+            templateUrl: '/views/about.html',
             controller: 'aboutCtrl',
             controllerAs: 'about'
         }).when('/faq', {
-            templateUrl: '/assets/views/faq.html',
+            templateUrl: '/views/faq.html',
             controller: 'faqCtrl',
             controllerAs: 'faq'
         }).when('/login', {
-            templateUrl: '/assets/views/login.html',
+            templateUrl: '/views/login.html',
             controller: 'loginCtrl',
             controllerAs: 'login'
         }).otherwise('/');
