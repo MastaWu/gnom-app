@@ -21,7 +21,7 @@ module.exports = function(grunt) {
             options: {
                 ignores: [
                     "./node_modules/**",
-                    "./build/**",
+                    "./dist/**",
                     "./Gruntfile.js",
                     "./test/**",
                     "./public/src/js/landing/jqBootstrapValidation.js"
@@ -48,8 +48,8 @@ module.exports = function(grunt) {
         uglify: {
             dev: {
                 files: {
-                    'public/build/dev/min/js/app.min.js': ['public/src/js/*.js'],
-                    'public/build/dev/min/js/landing/landing.min.js': ['public/src/js/landing/*.js']
+                    'public/dist/js/app.min.js': ['public/src/js/*.js'],
+                    'public/dist/js/landing/landing.min.js': ['public/src/js/landing/*.js']
                 }
             }
         },
@@ -58,8 +58,8 @@ module.exports = function(grunt) {
         cssmin: {
             target: {
                 files: {
-                    'public/build/dev/min/css/index.min.css': ['public/src/css/*.css'],
-                    'public/build/dev/min/css/landing/agency.min.css': ['public/src/css/landing/*.css']
+                    'public/dist/css/index.min.css': ['public/src/css/*.css'],
+                    'public/dist/css/landing/agency.min.css': ['public/src/css/landing/*.css']
                 }
             }
         },
@@ -68,16 +68,16 @@ module.exports = function(grunt) {
         copy: {
             main: {
                 files: [
-                    { expand: true, cwd: 'public/src/', src: ['libs/**'], dest: 'public/build/dev/'}
+                    { expand: true, cwd: 'public/src/', src: ['libs/**'], dest: 'public/dist/'}
                 ]
             }
         },
 
         // cleans build directory
         clean: {
-            folder: ['./public/build/**'],
-            css: ['./public/build/dev/min/css/*.css'],
-            js: ['./public/build/dev/min/js/*.js']
+            folder: ['./public/dist/**'],
+            css: ['./public/dist/css/*.css'],
+            js: ['./public/dist/js/*.js']
         },
 
         // watch our static files for change, and then run our tasks on them
