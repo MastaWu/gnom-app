@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                     "./dist/**",
                     "./Gruntfile.js",
                     "./test/**",
-                    "./public/src/js/landing/jqBootstrapValidation.js"
+                    "./views/landing/js/*.js"
                 ],
                 reporter: require('jshint-stylish')
             },
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
             dev: {
                 files: {
                     'public/dist/js/app.min.js': ['public/src/js/**/*.js'],
-                    'public/dist/js/landing/landing.min.js': ['public/src/js/landing/*.js']
+                    'public/dist/js/landing/landing.min.js': ['views/landing/js/*.js']
                 }
             }
         },
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
             target: {
                 files: {
                     'public/dist/css/index.min.css': ['public/src/css/*.css'],
-                    'public/dist/css/landing/agency.min.css': ['public/src/css/landing/*.css']
+                    'public/dist/css/landing/agency.min.css': ['views/landing/css/*.css']
                 }
             }
         },
