@@ -17,7 +17,7 @@
                 controllerAs: 'login',
                 clicksOutsideToClose: true
             });
-        };
+        }
         
         function logout() {
             userService.logout();
