@@ -23,7 +23,7 @@
             
             console.log(loginInformation);
             
-            $http.post('/user/login', loginInformation)
+            $http.post('api/auth/login', loginInformation)
                 .then(function(response){
                     // login successful if there's a token in the response
                     if(response.data.token){
