@@ -12,7 +12,7 @@
         function showLogin() {
             $mdDialog.show({
                 parent: angular.element(document.body),
-                templateUrl: '/assets/views/login.html',
+                templateUrl: '/views/login.html',
                 controller: 'loginCtrl',
                 controllerAs: 'login',
                 clicksOutsideToClose: true

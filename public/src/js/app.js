@@ -10,8 +10,8 @@
         'ngStorage',
         'ngAnimate'
     ])
-        .config(config);
-        //.run(run);
+        .config(config)
+        .run(run);
 
     function config($routeProvider, $httpProvider, $locationProvider){
 
