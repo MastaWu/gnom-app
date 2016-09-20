@@ -1,14 +1,22 @@
 var config = require('../../config/config');
 var jwt = require('jsonwebtoken');
+var Hashids = require('hashids');
+var hashids = new Hashids();
+var hashedId;
 
-exports.generateToken = function(email, role, res) {
+exports.generateToken = function(id, role, res) {
     console.log("TokenGenerator: Creating token.");
-    console.log("TokenGenerator: Email: " + email);
+    console.log("TokenGenerator: Email: " + id);
     console.log("TokenGenerator: Role: " + role);
-    jwt.sign({
-        email: email,
+    hashedId = hashids.encode(id);
+
+    var user = {
+        id: hashedId,
         role: role
-    }, config.secret, {
+    };
+
+    jwt.sign(user,
+        config.secret, {
         algorithm: 'HS512',
         expiresIn: "10h",
         issuer: "gnomgnomgnom"
@@ -18,10 +26,9 @@ exports.generateToken = function(email, role, res) {
             throw err;
         }
         console.log("TokenGenerator: Token created. \n" + token);
-        res.status(200).json({
-            success: true,
-            message: 'Enjoy your token!',
-            token: "jwt " + token
+        res.send({
+            token: token,
+            user: user
         });
     });
 };

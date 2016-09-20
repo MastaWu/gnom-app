@@ -1,36 +1,34 @@
 (function(){
-    loginController.$inject = ['$mdDialog', '$location', 'userService'];
+    loginController.$inject = ['$window', '$scope', '$location', '$rootScope', '$auth', 'userService'];
     angular.module('tomorrow-app')
         .controller('loginCtrl', loginController);
 
-    function loginController($mdDialog, $location, userService){
-        var vm = this;
-        
-        vm.cancel = cancel;
-        vm.login = login;
-        
-        initController();
-        
-        function initController() {
-            userService.logout();
-        }
-        
-        function login() {
-            vm.loading = true;
-            
-            userService.login(vm.username, vm.password, function(result){
-                if(result === true) {
-                    $location.path('/about');
-                    $mdDialog.hide();
-                } else {
-                    vm.error = 'Username or password is incorrect';
-                    vm.loading = false;
-                }
-            });
-        }
-        
-        function cancel() {
-            $mdDialog.hide();
-        }
+    function loginController($window, $scope, $location, $rootScope, $auth, userService){
+
+        $scope.instagramLogin = function() {
+            $auth.authenticate('instagram')
+                .then(function(res) {
+                    $window.localStorage.currentUser = JSON.stringify(res.data.user);
+                    $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+                })
+                .catch(function(res) {
+                    console.log(res.data);
+                });
+        };
+
+        $scope.emailLogin = function() {
+            $auth.login({ email: $scope.email, password: $scope.password })
+                .then(function(res) {
+                    $window.localStorage.currentUser = JSON.stringify(res.data.user);
+                    $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+                })
+                .catch(function(res) {
+                    $scope.errorMessage = {};
+                    angular.forEach(res.data.message, function(message, field) {
+                        $scope.loginForm[field].$setValidity('server', false);
+                        $scope.errorMessage[field] = res.data.message[field];
+                    });
+                });
+        };
     }
 })();

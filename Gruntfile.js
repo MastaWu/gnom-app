@@ -66,7 +66,7 @@ module.exports = function(grunt) {
         cssmin: {
             target: {
                 files: {
-                    'public/dist/css/index.min.css': ['public/src/css/*.css'],
+                    'public/dist/css/index.min.css': ['public/src/css/**/*.css'],
                     'public/dist/css/landing/agency.min.css': ['views/landing/css/*.css']
                 }
             }
@@ -85,23 +85,30 @@ module.exports = function(grunt) {
         // cleans build directory
         clean: {
             folder: ['./public/dist/**'],
-            css: ['./public/dist/css/*.css'],
-            js: ['./public/dist/js/*.js']
+            css: ['./public/dist/css/**/*.css'],
+            js: ['./public/dist/js/**/*.js']
         },
 
         // watch our static files for change, and then run our tasks on them
         watch: {
             css: {
-                files: ['./public/src/css/*.css'],
-                task: ['clean:css', 'cssmin']
+                files: ['./public/src/css/**/*.css'],
+                task: ['cssmin']
             },
             js: {
-                files: ['./public/src/js/*.js'],
+                files: ['./public/src/js/**/*.js'],
                 tasks: ['clean:js', 'jshint', 'ngAnnotate', 'uglify']
             },
-            libs: {
-                files: ['./public/src/libs/'],
+            img: {
+                files: ['./public/src/img/**'],
                 tasks: ['copy']
+            },
+            html: {
+                files: ['./views/index.html', './views/**/*.html'],
+                options: {
+                    livereload: true
+                },
+                tasks: ['targethtml', 'copy']
             }
         },
 
@@ -111,7 +118,7 @@ module.exports = function(grunt) {
                 logConcurrentOutput: true
             },
 
-            tasks: ['nodemon', 'watch']
+            tasks: ['watch', 'nodemon']
         }
     });
 
@@ -130,6 +137,6 @@ module.exports = function(grunt) {
     // create tasks
     grunt.registerTask('default', ['nodemon']);
     grunt.registerTask('clean' ['clean']);
-    grunt.registerTask('dev', ['clean', 'jshint', 'ngAnnotate', 'uglify', 'cssmin', 'copy', 'concurrent']);
+    grunt.registerTask('dev', ['clean', 'jshint', 'ngAnnotate', 'uglify', 'cssmin', 'copy', 'targethtml', 'concurrent']);
     grunt.registerTask('production', ['clean', 'jshint', 'ngAnnotate', 'uglify', 'cssmin', 'copy', 'targethtml']);
 };
