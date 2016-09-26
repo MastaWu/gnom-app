@@ -10,6 +10,7 @@
                 .then(function(res) {
                     $window.localStorage.currentUser = JSON.stringify(res.data.user);
                     $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+                    $location.path('/');
                 })
                 .catch(function(res) {
                     console.log(res.data);
@@ -21,6 +22,7 @@
                 .then(function(res) {
                     $window.localStorage.currentUser = JSON.stringify(res.data.user);
                     $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+                    $location.path('/');
                 })
                 .catch(function(res) {
                     $scope.errorMessage = {};

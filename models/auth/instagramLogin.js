@@ -6,6 +6,7 @@ var Hashids = require('hashids');
 var hashids = new Hashids();
 var tokenGenerator = require('./tokenGenerator');
 var config = require('../../config/config');
+var userRoles = require("../users/userRoles");
 var queryValues = [];
 var unhashedIds;
 
@@ -28,16 +29,16 @@ exports.instagramLogin = function(req, res) {
             console.log("Instagram Login: Instagram data: " + JSON.stringify(body) );
 
             if(req.headers.authorization) {
-                console.log("Instagram Login: User has an Authorization header.");
                 queryValues.push(body.user.id);
 
                 var getInstagramLocalUserQuery = {
                     sql: "SELECT user_id FROM gnomApp.user WHERE instagram_id=?",
                     values: queryValues
                 };
-                database.query(getInstagramLocalUserQuery, function (existingUser) {
-                    console.log("Instagram Login: Queried database to check for InstagramID(Autherization Header).");
-
+                database.query(getInstagramLocalUserQuery, function (existingInstagramUser) {
+                    console.log("Instagram Login: Queried database to check for InstagramID(Autherization Header). existingInstagramUser Result: " + JSON.stringify(existingInstagramUser));
+                    var existingUser = existingInstagramUser.length > 0;
+                    console.log("Instagram Login: Checking existingInstagramUser length " + existingUser);
                     var token = req.headers.authorization.split(' ')[1];
                     console.log("Instagram Login: Decode token from Authorization header.");
                     var payload = jwt.verify(token, config.secret, function (err, decoded) {
@@ -48,7 +49,7 @@ exports.instagramLogin = function(req, res) {
                         }
 
                         queryValues = [];
-                        queryValues.push(unhashedIds.decode((decoded.id)));
+                        queryValues.push(hashids.decode((decoded.id)));
 
                         var getUserQuery = {
                             sql: "SELECT user_id, user_email, user_password, user_role FROM gnomApp.user WHERE user_id=?;",
@@ -57,25 +58,27 @@ exports.instagramLogin = function(req, res) {
 
                         database.query(getUserQuery, function (localUser) {
                             console.log("Instagram Login: Queried database to check for local user with token info.");
-                            if (!localUser) {
-                                return res.status(400).send({message: 'User not found'});
+                            var checkLocalUser = localUser.length > 0;
+                            if (!checkLocalUser) {
+                                return res.status(400).send({message: 'Please clear your cache. User not found.'});
                             }
 
-                            console.log("Instagram Login: User's token has a valid local user account.");
-                            if (existingUser && existingUser.length > 0) {
+                            console.log("Instagram Login: User's token has a valid local user account. localUser Result: " + JSON.stringify(localUser));
+                            if (existingInstagramUser && existingInstagramUser.length > 0) {
                                 queryValues = [];
                                 queryValues.push(body.user.id);
                                 queryValues.push(localUser[0].user_email);
                                 queryValues.push(localUser[0].user_password);
 
                                 var updateUserQuery = {
-                                    sql: "UPDATE gnomApp.user WHERE instagram_id=? SET user_email=?, user_password=?;",
+                                    sql: "UPDATE gnomApp.user SET user_email=?, user_password=? WHERE instagram_id=?;",
                                     values: queryValues
                                 };
 
-                                database.query(updateUserQuery, function (localUser) {
+                                database.query(updateUserQuery, function (updatedLocalUser) {
+                                    console.log("Instagram Login: User's account has been updated. updatedLocalUser Result: " + JSON.stringify(updatedLocalUser));
                                     queryValues = [];
-                                    queryValues.push(localUser[0].user_id);
+                                    queryValues.push(updatedLocalUser.insertId);
 
                                     var deleteUserQuery = {
                                         sql: "DELETE FROM gnomApp.user WHERE user_id=?;",
@@ -83,22 +86,22 @@ exports.instagramLogin = function(req, res) {
                                     };
 
                                     database.query(deleteUserQuery, function (deletedUser) {
-                                        tokenGenerator.generateToken(localUser[0].user_id, local[0].user_role, res);
+                                        tokenGenerator.generateToken(localUser[0].user_id, localUser[0].user_role, res);
                                     });
                                 });
                             } else {
                                 queryValues = [];
-                                queryValues.push(localUser[0].user_id);
                                 queryValues.push(body.user.id);
+                                queryValues.push(localUser[0].user_id);
 
                                 var saveUserQuery = {
-                                    sql: "UPDATE gnomApp.user WHERE user_id=? SET instagram_id=?;",
+                                    sql: "UPDATE gnomApp.user SET instagram_id=? WHERE user_id=?;",
                                     values: queryValues
                                 };
 
-                                database.query(saveUserQuery, function (localUser) {
+                                database.query(saveUserQuery, function (savedLocalUser) {
                                     console.log("Instagram Login: Updating user info to add Instagram Login. Result:\n" + JSON.stringify(localUser));
-                                    tokenGenerator.generateToken(localUser[0].user_id, local[0].user_role, res);
+                                    tokenGenerator.generateToken(savedLocalUser.insertId, localUser[0].user_role, res);
                                 });
                             }
                         });
@@ -106,6 +109,7 @@ exports.instagramLogin = function(req, res) {
                 });
             } else {
                 queryValues = [];
+                console.log("Instagram Login: Attemping to login without Header. Body results: " + JSON.stringify(body.user));
                 queryValues.push(body.user.id);
 
                 var getInstagramUserQuery = {
@@ -114,14 +118,13 @@ exports.instagramLogin = function(req, res) {
                 };
                 database.query(getInstagramUserQuery, function (existingUser) {
                     console.log("Instagram Login: Queried database to check for InstagramID.");
-                    console.log("Instagram Login: getInstagramUserQuery Results: " + existingUser);
+                    console.log("Instagram Login: getInstagramUserQuery Results: " + JSON.stringify(existingUser));
                     if(existingUser && existingUser > 0) {
                         tokenGenerator.generateToken(existingUser[0].user_id, existingUser[0].user_role, res);
                     } else {
-                        var userRole = "user"
                         queryValues = [];
                         queryValues.push(body.user.id);
-                        queryValues.push(userRole);
+                        queryValues.push(userRoles.regularUser);
 
                         var saveNewInstagramUserQuery = {
                             sql: "INSERT INTO gnomApp.user SET instagram_id=?, user_role=?;",
@@ -130,7 +133,7 @@ exports.instagramLogin = function(req, res) {
 
                         database.query(saveNewInstagramUserQuery, function (localUser) {
                             console.log("Instagram Login: getInstagramUserQuery Results: Line126" + localUser);
-                            tokenGenerator.generateToken(localUser.insertId, userRole, res);
+                            tokenGenerator.generateToken(localUser.insertId, userRoles.regularUser, res);
                         });
                     }
                 });

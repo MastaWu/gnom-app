@@ -1,21 +1,30 @@
 (function(){
-    signupCtrl.$inject = ['$scope', '$auth'];
+    signupCtrl.$inject = ['$scope', '$location', '$http', '$window', '$rootScope'];
     angular.module('tomorrow-app')
         .controller('signupCtrl', signupCtrl);
 
-    function signupCtrl($scope, $auth) {
-        var vm = $scope;
+    function signupCtrl($scope, $location, $http, $window, $rootScope) {
 
-        $scope.signup = function() {
-            var user = {
-                email: vm.email,
-                password: vm.password
+        $scope.localSignup = function() {
+            console.log("Signing up!");
+            var req = {
+                method: 'POST',
+                url: '/api/auth/signup',
+                data: {
+                    email: $scope.email,
+                    password: $scope.password
+                }
             };
 
-            $auth.signup(user)
-                .catch(function(res) {
-                    console.log(res.data);
-                });
+            $http(req)
+                .then(function(res) {
+                    $window.localStorage.currentUser = JSON.stringify(res.data.user);
+                    $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+                    $location.path('/');
+                }, function(response) {
+                    console.log(response.data);
+                    }
+                );
         };
     }
 })();

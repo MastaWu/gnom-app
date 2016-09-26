@@ -6,7 +6,7 @@ var hashedId;
 
 exports.generateToken = function(id, role, res) {
     console.log("TokenGenerator: Creating token.");
-    console.log("TokenGenerator: Email: " + id);
+    console.log("TokenGenerator: Id: " + id);
     console.log("TokenGenerator: Role: " + role);
     hashedId = hashids.encode(id);
 
@@ -26,7 +26,7 @@ exports.generateToken = function(id, role, res) {
             throw err;
         }
         console.log("TokenGenerator: Token created. \n" + token);
-        res.send({
+        res.json({
             token: token,
             user: user
         });

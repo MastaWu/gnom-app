@@ -1,12 +1,12 @@
 var database = require('../../database/database');
 var bcrypt = require('bcrypt-nodejs');
 var tokenGenerator = require('./tokenGenerator');
-var hashid = require('hashids');
 var queryValues = [];
 
 exports.localSignup = function(req, res) {
 
     queryValues.push(req.body.email);
+    console.log(req.body);
     console.log(req.body.email);
 
     var checkEmailQuery = {
@@ -33,10 +33,10 @@ exports.localSignup = function(req, res) {
                 values: queryValues
             };
 
-            database.query(createNewUserQuery, function (res) {
+            database.query(createNewUserQuery, function (newUser) {
                 console.log("Sign-up: Giving token to user.");
-                console.log("Sign-up: Response from query: " + JSON.stringify(res));
-                tokenGenerator.generateToken(res.insertId, 'user', res);
+                console.log("Sign-up: Response from query: " + JSON.stringify(newUser));
+                tokenGenerator.generateToken(newUser.insertId, 'user', res);
                 console.log("Sign-up: Finished.");
             });
         }

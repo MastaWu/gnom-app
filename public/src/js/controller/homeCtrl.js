@@ -5,11 +5,11 @@
         
         function homeController($window, $scope, $rootScope, $auth) {
             var vm = $scope;
-            this.isAuthenticated = function() {
+            $scope.isAuthenticated = function() {
                 return $auth.isAuthenticated();
             };
 
-            this.linkInstagram = function() {
+            $scope.linkInstagram = function() {
                 $auth.link('instagram')
                     .then(function(res) {
                         $window.localStorage.currentUser = JSON.stringify(res.data.user);
