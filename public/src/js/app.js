@@ -27,7 +27,13 @@
                 url: '/about',
                 templateUrl: '/views/about.html',
                 controller: 'aboutCtrl',
-                controllerAs: 'about',
+                controllerAs: 'about'
+            })
+            .state('deals', {
+                url: '/deals',
+                templateUrl: '/views/deals.html',
+                controller: 'dealsCtrl',
+                controllerAs: 'deal',
                 resolve: {
                     loginRequired: loginRequired
                 }
