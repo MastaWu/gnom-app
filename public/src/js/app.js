@@ -32,7 +32,7 @@
             .state('deals', {
                 url: '/deals',
                 templateUrl: '/views/deals.html',
-                controller: 'dealsCtrl',
+                controller: 'getAllDealsCtrl',
                 controllerAs: 'deal',
                 resolve: {
                     loginRequired: loginRequired
