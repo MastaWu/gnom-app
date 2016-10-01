@@ -1,5 +1,5 @@
 (function() {
-    angular.module('tomorrow-app')
+    angular.module('gnom-app')
         .directive('serverError', serverError);
 
     function serverError() {

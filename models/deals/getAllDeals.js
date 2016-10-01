@@ -4,7 +4,7 @@ module.exports = function getAllDeals(req, res) {
 
     var database = require('../../database/database');
     var getAllDealsQuery = {
-        sql: "SELECT * FROM gnomApp.deal;"
+        sql: "SELECT * FROM gnomApp.deal INNER JOIN gnomApp.restaurant ON gnomApp.deal.restaurant_id = gnomApp.restaurant.restaurant_id;"
     };
 
     database.query(getAllDealsQuery, function (results) {

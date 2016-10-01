@@ -1,17 +1,18 @@
 (function() {
-    getAllDealsController.$inject = ['getAllDealsService'];
-    angular.module('tomorrow-app')
+    getAllDealsController.$inject = ['getAllDealsService', '$state'];
+    angular.module('gnom-app')
         .controller('getAllDealsCtrl', getAllDealsController);
 
-    function getAllDealsController(getAllDealsService) {
+    function getAllDealsController(getAllDealsService, $state) {
         var vm = this;
         vm.allDeals = [];
+        vm.$state = $state;
 
         activate();
 
         function activate() {
             return getAllDeals().then(function() {
-                console.log('Activated get all deals');
+                console.log("Deals have been activated!");
             });
         }
 
@@ -22,8 +23,6 @@
 
         function getAllDataResponse(data) {
             vm.allDeals = data;
-            console.log(vm.allDeals);
-            console.log(vm.allDeals[0].deal_name);
             return vm.allDeals;
         }
     }

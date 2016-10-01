@@ -1,6 +1,6 @@
 (function() {
     getAllDealService.$inject = ['$http'];
-    angular.module('tomorrow-app')
+    angular.module('gnom-app')
         .factory('getAllDealsService', getAllDealService);
 
     function getAllDealService($http) {

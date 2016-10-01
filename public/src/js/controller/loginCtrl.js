@@ -1,6 +1,6 @@
 (function(){
     loginController.$inject = ['$window', '$scope', '$location', '$rootScope', '$auth', 'userService'];
-    angular.module('tomorrow-app')
+    angular.module('gnom-app')
         .controller('loginCtrl', loginController);
 
     function loginController($window, $scope, $location, $rootScope, $auth, userService){
@@ -20,6 +20,7 @@
         $scope.emailLogin = function() {
             $auth.login({ email: $scope.email, password: $scope.password })
                 .then(function(res) {
+                    console.log(JSON.stringify(res.data));
                     $window.localStorage.currentUser = JSON.stringify(res.data.user);
                     $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
                     $location.path('/');

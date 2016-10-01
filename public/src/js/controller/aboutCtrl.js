@@ -1,17 +1,9 @@
 (function(){
     aboutController.$inject = ['aboutService'];
-    angular.module('tomorrow-app')
+    angular.module('gnom-app')
         .controller('aboutCtrl', aboutController);
     
-    function aboutController(aboutService) {
+    function aboutController() {
         var vm = this;
-        vm.pageClass = 'page-about';
-        
-        vm.greeting = {};
-        var response = aboutService.checkRole();
-        response.then(function(data){
-            vm.greeting = data;
-            console.log(JSON.stringify(vm.greeting));
-        });
     }
 })();

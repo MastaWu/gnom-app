@@ -143,6 +143,69 @@ a:hover {
     padding-bottom: 5px;
 }
 
+.deal-parent-panel.ng-enter {
+    -webkit-transition:all linear .2s;
+    transition: all linear .2s ;
+    opacity:0;
+}
+
+.deal-parent-panel.ng-enter-stagger {
+    -webkit-transition-delay:.2s;
+    transition-delay:.2s;
+
+    -webkit-transition-duration:0s;
+    transition-duration:0s;
+}
+
+.deal-parent-panel.ng-enter.ng-enter-active {
+    opacity:1;
+}
+
 .deal-price-row {
     margin: 5px;
+}
+
+.deal-button-row {
+    margin:10px;
+}
+
+.deal-view-type {
+    padding: 5px;
+}
+
+.deal-list-btn {
+    margin: 10px;
+}
+
+.deal-list-btn-group {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 90px;
+}
+
+#search-input-group button {
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+#search-input-group button:hover {
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+#search-input-group {
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+#search-input-group input {
+    border: 0;
+    box-shadow: none;
 }

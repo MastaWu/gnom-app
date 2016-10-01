@@ -1,5 +1,5 @@
 (function(){
-    angular.module('tomorrow-app')
+    angular.module('gnom-app')
         .controller('faqCtrl', faqController);
     
     function faqController() {

@@ -1,19 +1,9 @@
 (function(){
     aboutService.$inject = ['$http'];
-    angular.module('tomorrow-app')
+    angular.module('gnom-app')
         .service('aboutService', aboutService);
 
     function aboutService($http) {
 
-        this.checkRole = function checkRole() {
-            var response = {};
-            response.id = 1;
-            response.content = "This is a test";
-
-            return $http.get('/api/role').then(function(res){
-                response.role = res.data;
-                return response;
-            });
-        };
     }
 })();

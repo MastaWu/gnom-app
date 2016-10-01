@@ -1,6 +1,6 @@
 (function(){
-    navController.$inject = ['$location', '$window', '$scope', '$auth'];
-    angular.module('tomorrow-app').controller('navCtrl', navController);
+    navController.$inject = ['$location', '$window', '$scope', '$auth', '$state'];
+    angular.module('gnom-app').controller('navCtrl', navController);
     
     function navController($location, $window, $scope, $auth){
 
@@ -15,7 +15,6 @@
         }
 
         function isAuthenticated() {
-            console.log($auth.isAuthenticated());
             return $auth.isAuthenticated();
         }
 

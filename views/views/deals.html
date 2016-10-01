@@ -1,37 +1,37 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="col-sm-6 col-md-4">
-                <div class="panel deal-panel">
-                    <h4 class="text-center">{{deal.allDeals[0].deal_name}}</h4>
-                    <img src="http://placehold.it/650x450&text=Galaxy S5" class="img-responsive">
-                    <div class="caption">
-                        <div class="row deal-price-row">
-                            <div class="col-md-8 col-xs-8">
-                                <h4>
-                                    <label>McDonalds</label>
-                                </h4>
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <h4>
-                                    <label>{{deal.allDeals[0].price}}</label>
-                                </h4>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-10">
+                        <div id="search-input-group">
+                            <div class="input-group col-md-12 search-input">
+                                <input type="text" class="form-control" placeholder="   Search"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
                             </div>
                         </div>
-                        <p>Food Type: {{deal.allDeals[0].price}}</p>
-                        <p>Date End: {{deal.allDeals[0].date_end}}</p>
-                        <div class="row text-center deal-button-row">
-                            <div class="col-md-6">
-                                <a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="btn-group pull-right deal-view-type">
+                            <a ui-sref=".cards" class="btn btn-default" ng-class="{active: deal.$state.includes('deals.cards')}">
+                                <span class="glyphicon glyphicon-th-large"></span>
+                            </a>
+                            <a ui-sref=".lists" class="btn btn-default" ng-class="{active: deal.$state.includes('deals.lists')}">
+                                <span class="glyphicon glyphicon-th-list"></span>
+                            </a>
                         </div>
-
-                        <p> </p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div ui-view></div>
     </div>
 </div>

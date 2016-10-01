@@ -2,7 +2,7 @@
     'use strict';
 
     userService.$inject = ['$http', '$localStorage', '$rootScope'];
-    angular.module('tomorrow-app')
+    angular.module('gnom-app')
         .service('userService', userService);
 
     function userService($http, $localStorage, $rootScope){

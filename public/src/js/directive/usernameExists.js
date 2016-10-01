@@ -1,4 +1,4 @@
-angular.module('tomorrow-app')
+angular.module('gnom-app')
     .directive('usernameExists', ['$http', function($http){
         return {
             require: 'ngModel',

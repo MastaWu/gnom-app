@@ -1,6 +1,6 @@
 (function(){
         homeController.$inject = ['$window', '$scope', '$rootScope', '$auth'];
-     angular.module('tomorrow-app')
+     angular.module('gnom-app')
          .controller('homeCtrl', homeController);
         
         function homeController($window, $scope, $rootScope, $auth) {

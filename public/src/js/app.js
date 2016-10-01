@@ -4,7 +4,7 @@
     config.$inject = ['$httpProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', '$authProvider'];
     run.$inject = ['$rootScope', '$window', '$auth'];
     loginRequired.$inject = ['$q', '$location', '$auth'];
-    angular.module('tomorrow-app',[
+    angular.module('gnom-app',[
         'ui.router',
         'ngMessages',
         'ngStorage',
@@ -31,12 +31,25 @@
             })
             .state('deals', {
                 url: '/deals',
+                abstract: true,
                 templateUrl: '/views/deals.html',
                 controller: 'getAllDealsCtrl',
                 controllerAs: 'deal',
                 resolve: {
                     loginRequired: loginRequired
                 }
+            })
+            .state('deals.cards', {
+                url: '',
+                templateUrl: '/views/deals-cards.html',
+                controller: 'getAllDealsCtrl',
+                controllerAs: 'deal'
+            })
+            .state('deals.lists', {
+                url: '/lists',
+                templateUrl: '/views/deals-lists.html',
+                controller: 'getAllDealsCtrl',
+                controllerAs: 'deal'
             })
             .state('faq', {
                 url: '/faq',
