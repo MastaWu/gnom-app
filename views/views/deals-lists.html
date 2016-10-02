@@ -1,4 +1,4 @@
-<div ng-repeat="deals in deal.allDeals" class="deal-parent-panel">
+<div ng-repeat="deals in deal.allDeals | filter:d as results" class="deal-parent-panel">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-body">
@@ -28,6 +28,13 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="animate-repeat panel-body" ng-if="results.length == 0">
+            <strong>No results found...</strong>
         </div>
     </div>
 </div>

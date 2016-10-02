@@ -12,7 +12,6 @@
 
         function activate() {
             return getAllDeals().then(function() {
-                console.log("Deals have been activated!");
             });
         }
 

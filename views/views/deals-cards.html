@@ -1,8 +1,8 @@
-<div ng-repeat="deals in deal.allDeals" class="deal-parent-panel">
-    <div class="clearfix" ng-if="$index % 3 == 0"></div>
-    <div class="col-sm-6 col-md-4">
+<div ng-repeat="deals in deal.allDeals | filter:d as results" class="deal-parent-panel">
+    <div class="clearfix" ng-if="$index % 4 == 0"></div>
+    <div class="col-sm-3 col-md-3">
         <div class="panel deal-panel">
-            <h4 class="text-center">{{deals.deal_name}}</h4>
+            <h4 class="text-center deal-card-name">{{deals.deal_name}}</h4>
             <img src="http://placehold.it/650x450&text=Galaxy S5" class="img-responsive">
             <div class="caption">
                 <div class="row deal-price-row">
@@ -31,6 +31,13 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="animate-repeat panel-body" ng-if="results.length == 0">
+            <strong>No results found...</strong>
         </div>
     </div>
 </div>

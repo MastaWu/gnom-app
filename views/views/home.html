@@ -16,10 +16,10 @@
         </div>
     </div>
 
-    <div ng-if="isAuthenticated() && !currentUser.username" class="center-form panel">
-        <div class="panel-body">
-            <h5 class="text-center">Authenticated!</h5>
-            <p>This page does nothing.... BUT at least we know you're authenticated! :)</p>
+    <div ng-if="isAuthenticated() && !currentUser.username">
+        <div class="jumbotron">
+            <h2 class="text-center">Authenticated!</h2>
+            <p>This page doesn't do anything yet.... BUT at least we know you're authenticated! :)</p>
         </div>
     </div>
 

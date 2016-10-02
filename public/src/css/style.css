@@ -169,6 +169,10 @@ a:hover {
     margin:10px;
 }
 
+.deal-card-name {
+    padding: 13px;
+}
+
 .deal-view-type {
     padding: 5px;
 }
