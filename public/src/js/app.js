@@ -109,7 +109,7 @@
         if($auth.isAuthenticated()) {
             deferred.resolve();
         } else {
-            $location.path('/login');
+            $location.path('app/login');
         }
 
         return deferred.promise;
