@@ -22,7 +22,6 @@ app.use(bodyParser.json());
 // Log all requests to the console
 app.use(morgan('dev'));
 
-
 // Configure app to handle CORS requests
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -37,10 +36,6 @@ if(environment) {
     app.use('/js',express.static(path.join(__dirname, '/public/dist/js')));
     app.use('/css',express.static(path.join(__dirname, '/public/dist/css')));
     app.use('/views', express.static(path.join(__dirname, '/public/dist/views')));
-    app.get('/', function(req, res) {
-        console.log("App.js: Serving html file");
-        res.sendfile(path.join(__dirname, '/public/dist/index.html'));
-    });
 }
 
 // Register all apps to the api route.
@@ -49,9 +44,13 @@ app.use('/api', routes);
 
 // When a user requests a page that is not defined, we should send them a 404
 // TODO: Create a 404 page.
-app.all('*', function(req, res){
-    console.log("User requested random page.");
-});
+if(environment) {
+    app.all('/*', function (req, res)
+    {
+        console.log("App.js: Serving html file");
+        res.sendfile(path.join(__dirname, '/public/dist/index.html'));
+    });
+}
 
 // START SERVER
 app.listen(port);

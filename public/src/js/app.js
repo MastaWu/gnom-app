@@ -18,19 +18,19 @@
 
         $stateProvider
             .state('home', {
-                url: '/',
+                url: '/api',
                 templateUrl: '/views/home.html',
                 controller: 'homeCtrl',
                 controllerAs: 'home'
             })
             .state('about', {
-                url: '/about',
+                url: '/api/about',
                 templateUrl: '/views/about.html',
                 controller: 'aboutCtrl',
                 controllerAs: 'about'
             })
             .state('deals', {
-                url: '/deals',
+                url: '/api/deals',
                 abstract: true,
                 templateUrl: '/views/deals.html',
                 controller: 'getAllDealsCtrl',
@@ -46,28 +46,28 @@
                 controllerAs: 'deal'
             })
             .state('deals.lists', {
-                url: '/lists',
+                url: '/api/lists',
                 templateUrl: '/views/deals-lists.html',
                 controller: 'getAllDealsCtrl',
                 controllerAs: 'deal'
             })
             .state('faq', {
-                url: '/faq',
+                url: '/api/faq',
                 templateUrl: '/views/faq.html',
                 controller: 'faqCtrl',
                 controllerAs: 'faq'
             })
             .state('login', {
-                url: '/login',
+                url: '/api/login',
                 templateUrl: '/views/login.html',
                 controller: 'loginCtrl'
             })
             .state('signup', {
-                url: '/signup',
+                url: '/api/signup',
                 templateUrl: '/views/signup.html',
                 controller: 'signupCtrl'
             });
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('/api');
 
         $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
         // Use HTML5 History API

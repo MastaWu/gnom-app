@@ -7,10 +7,6 @@ var deals = require('../models/deals/index');
 var restaurants = require('../models/restaurants/index');
 var users = require('../models/users/index');
 
-routes.get('/', function(req, res){
-    res.status(200).json({ message: "Welcome!" });
-});
-
 routes.use('/auth', auth);
 routes.use('/deals', deals);
 routes.use('/restaurants', restaurants);

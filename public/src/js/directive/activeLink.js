@@ -9,7 +9,7 @@ angular.module('gnom-app')
                     var hrefs = [$location.path()];
                     angular.forEach(elem.find('a'), function (a) {
                         a = angular.element(a);
-                        if (-1 !== hrefs.indexOf(a.attr('href')) || (-1 !== hrefs[0].indexOf(a.attr('href').substring(1)) && a.attr('href').length > 1)) {
+                        if (((-1 !== hrefs[0].indexOf(a.attr('href').substring(5))) && (a.attr('href').length > 4)) || hrefs[0] === a.attr('href')) {
                             a.parent().addClass('active');
                         } else {
                             a.parent().removeClass('active');
