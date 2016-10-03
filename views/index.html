@@ -24,14 +24,14 @@
 <body ng-animate-children="true">
     <div class="navbar navbar-default navbar-static-top">
         <div class="container" ng-controller="navCtrl" active-link>
-            <a href="/api" class="navbar-brand"></i>Gnom</a>
+            <a href="/app" class="navbar-brand"></i>Gnom</a>
             <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
                 <li><a ui-sref="login">Login</a></li>
                 <li><a ui-sref="signup">Sign Up</a></li>
             </ul>
             <ul ng-if="isAuthenticated()" class="nav navbar-nav pull-right">
-                <li><a href="api/deals">Deals</a></li>
-                <li><a ng-click="logout()" href="api/logout">Logout</a></li>
+                <li><a href="app/deals">Deals</a></li>
+                <li><a ng-click="logout()" href="app/logout">Logout</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li><a ui-sref="home">Home</a></li>
