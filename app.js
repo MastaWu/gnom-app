@@ -1,6 +1,4 @@
 // app.js
-process.env.NODE_ENV = 'dev';
-
 // Pulling in node modules
 var express             = require('express');                       // express for basic http requests
 var app                 = express();
