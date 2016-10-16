@@ -1,7 +1,6 @@
 var database = require('../../database/database');
 var bcrypt = require('bcrypt-nodejs');
 var tokenGenerator = require('./tokenGenerator');
-var queryValues = [];
 
 exports.localLogin = function(req, res) {
 
@@ -20,7 +19,7 @@ exports.localLogin = function(req, res) {
     };
 
     database.query(getUserQuery, function (results) {
-        console.log("Local Login: Finished querying users.");
+        console.log("Local Login: Finished querying user.");
         console.log("Local Login: Results: \n" + JSON.stringify(results));
 
         if(!results || results.length === 0) {
@@ -44,7 +43,7 @@ exports.localLogin = function(req, res) {
                 });
             } else {
                 console.log("Local Login: Giving token to user.");
-                tokenGenerator.generateToken(results[0].user_id, results[0].role, res);
+                tokenGenerator.generateToken(results[0].user_id, results[0].user_role, res);
             }
         }
 

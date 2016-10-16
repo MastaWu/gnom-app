@@ -46,10 +46,16 @@
                 controllerAs: 'deal'
             })
             .state('deals.lists', {
-                url: '/app/lists',
+                url: '/app/deals/lists',
                 templateUrl: '/views/deals-lists.html',
                 controller: 'getAllDealsCtrl',
                 controllerAs: 'deal'
+            })
+            .state('detailedDeal', {
+                url: '/app/deal/:id',
+                templateUrl: '/views/deal-detailed-view.html',
+                controller: 'detailedDealCtrl',
+                controllerAs: 'detailedDeal'
             })
             .state('faq', {
                 url: '/app/faq',

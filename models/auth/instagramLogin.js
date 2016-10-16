@@ -6,9 +6,8 @@ var Hashids = require('hashids');
 var hashids = new Hashids();
 var tokenGenerator = require('./tokenGenerator');
 var config = require('../../config/config');
-var userRoles = require("../users/userRoles");
+var userRole = require("../user/userRole");
 var queryValues = [];
-var unhashedIds;
 
 exports.instagramLogin = function(req, res) {
     var accessTokenUrl = 'https://api.instagram.com/oauth/access_token';
@@ -49,7 +48,7 @@ exports.instagramLogin = function(req, res) {
                         }
 
                         queryValues = [];
-                        queryValues.push(hashids.decode((decoded.id)));
+                        queryValues.push(hashids.decode(decoded.id));
 
                         var getUserQuery = {
                             sql: "SELECT user_id, user_email, user_password, user_role FROM gnomApp.user WHERE user_id=?;",
@@ -124,7 +123,7 @@ exports.instagramLogin = function(req, res) {
                     } else {
                         queryValues = [];
                         queryValues.push(body.user.id);
-                        queryValues.push(userRoles.regularUser);
+                        queryValues.push(userRole.regularUser);
 
                         var saveNewInstagramUserQuery = {
                             sql: "INSERT INTO gnomApp.user SET instagram_id=?, user_role=?;",
@@ -133,7 +132,7 @@ exports.instagramLogin = function(req, res) {
 
                         database.query(saveNewInstagramUserQuery, function (localUser) {
                             console.log("Instagram Login: getInstagramUserQuery Results: Line126" + localUser);
-                            tokenGenerator.generateToken(localUser.insertId, userRoles.regularUser, res);
+                            tokenGenerator.generateToken(localUser.insertId, userRole.regularUser, res);
                         });
                     }
                 });

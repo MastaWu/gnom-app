@@ -26,11 +26,11 @@ CREATE TABLE IF NOT EXISTS user (
 	PRIMARY KEY (user_id)
 	);
     
-CREATE TABLE IF NOT EXISTS restaurant_admin (
-	restaurant_admin_id INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS restaurant_owner (
+	restaurant_owner_id INT NOT NULL AUTO_INCREMENT,
     restaurant_id INT NOT NULL,
     user_id INT NOT NULL,
-    PRIMARY KEY (restaurant_admin_id),
+    PRIMARY KEY (restaurant_owner_id),
     FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id),
     FOREIGN KEY (user_id) REFERENCES user(user_id)
     );
@@ -70,13 +70,13 @@ CREATE TABLE IF NOT EXISTS deal_review (
     FOREIGN KEY (user_id) REFERENCES user(user_id)
 );    
     
-CREATE TABLE IF NOT EXISTS invoice (
-	invoice_id INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `order` (
+	order_id INT NOT NULL AUTO_INCREMENT,
     deal_id INT NOT NULL,
     user_id INT NOT NULL,
-    invoice_total float NOT NULL,
-    invoice_detail VARCHAR(50) NULL,
-    PRIMARY KEY (invoice_id),
+    order_total float NOT NULL,
+    order_detail VARCHAR(50) NULL,
+    PRIMARY KEY (order_id),
     FOREIGN KEY (deal_id) REFERENCES deal(deal_id),
     FOREIGN KEY (user_id) REFERENCES user(user_id)
     );

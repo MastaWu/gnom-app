@@ -1,3 +1,5 @@
+// with restaurant information.
+
 var config = require('../../config/config');
 var jwt = require('jsonwebtoken');
 var Hashids = require('hashids');

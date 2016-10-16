@@ -29,7 +29,7 @@ exports.localSignup = function(req, res) {
             queryValues.push(hash);
 
             var createNewUserQuery = {
-                sql: "INSERT INTO gnomApp.user SET user_email=?, user_password=?, user_role='user';",
+                sql: "INSERT INTO gnomApp.user SET user_email=?, user_password=?, user_role='customer';",
                 values: queryValues
             };
 

@@ -1,6 +1,8 @@
 // GET all deals available from the database.
 module.exports = function getAllDeals(req, res) {
-    console.log("Getting all deals");
+    console.log("Getting all deal");
+
+    console.log(req.body);
 
     var database = require('../../database/database');
     var getAllDealsQuery = {

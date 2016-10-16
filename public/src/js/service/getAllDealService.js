@@ -9,7 +9,7 @@
         };
 
         function getAllDeals() {
-            return $http.get('/api/deals/all')
+            return $http.get('/api/deal/all')
                 .then(getAllDealsComplete)
                 .catch(getAllDealsFailed);
         }
@@ -19,7 +19,7 @@
         }
 
         function getAllDealsFailed(err) {
-            console.log(err);
+            console.log("getAllDealsFailed: " + err);
         }
     }
 })();

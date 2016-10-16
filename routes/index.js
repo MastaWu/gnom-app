@@ -1,16 +1,17 @@
-var passportService = require('../models/auth/strategy/passport');
 var passport = require('passport');
 var routes = require('express').Router();
 
 var auth = require('../models/auth/index');
-var deals = require('../models/deals/index');
-var restaurants = require('../models/restaurants/index');
-var users = require('../models/users/index');
+var user = require('../models/user/index');
+var deal = require('../models/deal/index');
+var order = require('../models/order/index');
+var restaurant = require('../models/restaurant/index');
 
 routes.use('/auth', auth);
-routes.use('/deals', deals);
-routes.use('/restaurants', restaurants);
-routes.use('/users', users);
+routes.use('/user', user);
+routes.use('/deal', deal);
+routes.use('/order', order);
+routes.use('/restaurant', restaurant);
 
 module.exports = routes;
 

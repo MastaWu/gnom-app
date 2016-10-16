@@ -7,13 +7,14 @@ exports.checkAuth = function(req, res, next) {
 
     if(!req.header('Authorization')) {
         console.log("CheckAuthentication: No Authorization header.");
-        return res.status(401).redirect('/login');
+        return res.status(403).send({err: "error", message: "Unauthorizated User."});
     }
 
     var token = req.header('Authorization').split(' ')[1];
 
     jwt.verify(token, config.secret, function(err, decoded) {
         console.log("CheckAuthentication: Token decoded.");
+        console.log("CheckAuthentication: Decoded token: " + JSON.stringify(decoded));
         if(err) {
             console.log("CheckAuthentication: Token decode error: " + err.message);
             return res.json({

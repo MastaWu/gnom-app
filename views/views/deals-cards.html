@@ -1,33 +1,43 @@
 <div ng-repeat="deals in deal.allDeals | filter:d as results" class="deal-parent-panel">
     <div class="clearfix" ng-if="$index % 4 == 0"></div>
     <div class="col-sm-3 col-md-3">
-        <div class="panel deal-panel">
-            <h4 class="text-center deal-card-name">{{deals.deal_name}}</h4>
-            <img src="http://placehold.it/650x450&text=Galaxy S5" class="img-responsive">
-            <div class="caption">
-                <div class="row deal-price-row">
-                    <div class="col-md-8 col-xs-8">
-                        <h4>
-                            <label>{{deals.restaurant_name}}</label>
-                        </h4>
-                    </div>
-                    <div class="col-md-4 col-xs-4">
-                        <h4>
-                            <label>${{deals.price}}</label>
-                        </h4>
+        <div class="panel deal-card-panel">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="">
+                        <img src="http://placehold.it/650x450&text=Galaxy S5" class="img-responsive">
+                        <div class="deal-card-banner">
+                            <div class="deal-card-banner-foodtype">
+                                <span class="text-center deal-card-banner-foodtype-text">{{deals.food_type}}</span>
+                            </div>
+                            <div class="deal-card-banner-price">
+                                <span class="deal-card-banner-price-text">{{deals.price}}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <p>Food Type: {{deals.food_type}}</p>
-                <p>Date End: {{deals.date_end | date:'yyyy-MM-dd HH:mm'}}</p>
-                <hr>
-                <div class="row text-center deal-button-row">
-                    <div class="col-md-6">
-                        <a class="btn btn-primary btn-product"><span
-                                class="glyphicon glyphicon-thumbs-up"></span> Like</a>
+            </div>
+            <div class="caption">
+                <div class="row ">
+                    <div class="text-center">
+                        <h5 class="deal-card-name">{{deals.deal_name}}</h5>
                     </div>
-                    <div class="col-md-6">
-                        <a href="#" class="btn btn-success btn-product">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> Buy</a>
+                </div>
+                <div class="row deal-restaurant-row">
+                    <div class="col-md-12">
+                        <div class="col-md-12 col-xs-12 text-center">
+                            <h6>
+                                <label>{{deals.restaurant_name}}</label>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <hr class="deal-card-hr"/>
+                <div class="row deal-card-details">
+                    <div class="col-md-12">
+                        <div class="col-md-12 text-center">
+                            <span>Date End: {{deals.date_end | date:'yyyy-MM-dd HH:mm'}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
