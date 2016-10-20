@@ -56,8 +56,7 @@ module.exports = function(grunt) {
         uglify: {
             dev: {
                 files: {
-                    'public/dist/js/app.min.js': ['public/src/js/**/*.js'],
-                    'public/dist/js/landing/landing.min.js': ['views/landing/js/*.js']
+                    'public/dist/js/app.min.js': ['public/src/js/**/*.js']
                 }
             }
         },
@@ -66,8 +65,7 @@ module.exports = function(grunt) {
         cssmin: {
             target: {
                 files: {
-                    'public/dist/css/index.min.css': ['public/src/css/**/*.css'],
-                    'public/dist/css/landing/agency.min.css': ['views/landing/css/*.css']
+                    'public/dist/css/index.min.css': ['public/src/css/**/*.css']
                 }
             }
         },

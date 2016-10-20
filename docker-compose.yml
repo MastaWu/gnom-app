@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+	nginx:
+		build: ./nginx
+		image: nginx:gnom
+		ports: 
+		- "8080:80"
+		container_name: nginx-reverse-proxy
+		links:
+			- api
+		
+	api:
+		build: ./api
+		image: api:gnom
+		container_name: api
+		expose:
+		  - "8080"
+		

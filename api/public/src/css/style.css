@@ -137,7 +137,7 @@ a:hover {
 }
 
 .deal-card-panel {
-
+    cursor: pointer;
 }
 
 .deal-parent-panel.ng-enter {
@@ -175,7 +175,7 @@ a:hover {
     background: rgba(0,0,0,.6);
     color: #fff;
     font-size: 20px;
-    line-height: 22px;
+    line-height: 15px;
     position: absolute;
     top: 0;
     padding: 8px 10px;

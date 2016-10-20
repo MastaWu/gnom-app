@@ -1,7 +1,7 @@
 <div ng-repeat="deals in deal.allDeals | filter:d as results" class="deal-parent-panel">
     <div class="clearfix" ng-if="$index % 4 == 0"></div>
     <div class="col-sm-3 col-md-3">
-        <div class="panel deal-card-panel">
+        <div class="panel deal-card-panel" ui-sref="detailedDeal({id: deals.deal_id})">
             <div class="row">
                 <div class="col-md-12">
                     <div class="">
