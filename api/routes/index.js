@@ -1,4 +1,3 @@
-var passport = require('passport');
 var routes = require('express').Router();
 
 var auth = require('../models/auth/index');

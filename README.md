@@ -1,11 +1,16 @@
-# gnom-app
+gnom-app
+==============
 
 #### In order to start app, you need to have nodejs installed.
 
-#### From command line, cd into gnom-app directory, and run:
+#### From command line, cd into gnom-app/api directory, and run:
 
-    npm install --dev
-    npm test
+    npm install
 
+#### If you want to run the app locally and test the app, run this command:
 
-##### NOTE: This requires you to have your local mysql instance set-up and a config file that contains your database config properties.
+    grunt dev
+
+**NOTE: This requires that you have the config files.**
+
+#### This app is dockerized, so you can run this in a container.

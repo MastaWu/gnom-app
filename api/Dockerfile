@@ -7,8 +7,10 @@ WORKDIR /var/www/gnom-app
 
 COPY package.json /var/www/gnom-app
 RUN npm install
+RUN npm install -g grunt-cli
 
 COPY . /var/www/gnom-app
+RUN grunt build
 
 EXPOSE 8080
-CMD pm2 start --no-daemon app.js
+CMD [ "npm", "start" ]
