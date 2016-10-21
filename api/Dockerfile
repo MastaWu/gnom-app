@@ -11,4 +11,4 @@ RUN npm install
 COPY . /var/www/gnom-app
 
 EXPOSE 8080
-CMD ["pm2", "app.js"]
+CMD pm2 start --no-daemon app.js
