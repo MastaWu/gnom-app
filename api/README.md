@@ -28,7 +28,7 @@ From command line, cd into gnom-app/api directory, and run:
 
     docker build -t gnom-app/api
 
-** This is creating the docker image **
+**This is creates the docker image**
 
 After the image has been built, check to see that gnom-app/api is not running yet.
 

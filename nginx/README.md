@@ -12,7 +12,7 @@ From command line, cd into gnom-app/nginx directory, and run:
 
     docker build -t gnom-app/nginx
 
-** This is creating the docker image **
+**This creates the docker image**
 
 After the image has been built, check to see that gnom-app/nginx is not running yet.
 

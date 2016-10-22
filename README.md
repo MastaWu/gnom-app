@@ -10,7 +10,7 @@ From command line, cd into the gnom-app/ directory, and run:
 
     docker-compose up --build
 
-** This is sets up both images and links the containers together **
+**This sets up both images and links the containers together**
 
 After the image has been built, check to see that everything is running.
 
