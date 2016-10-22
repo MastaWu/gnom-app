@@ -1,6 +1,4 @@
-# gnom-app #
-
-# API Deploy #
+# gnom-app - API Deploy #
 
 ## Local Deploy ##
 

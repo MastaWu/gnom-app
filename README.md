@@ -1,4 +1,4 @@
-# gnom-app #
+# gnom-app - Full Deploy #
 
 ## Full Dockerized Deploy ##
 

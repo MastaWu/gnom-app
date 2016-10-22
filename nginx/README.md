@@ -1,6 +1,4 @@
-# gnom-app #
-
-# Nginx Deploy #
+# gnom-app - Nginx Deploy #
 
 ## Dockerized Deploy ##
 
