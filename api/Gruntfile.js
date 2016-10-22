@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                     "./dist/**",
                     "./Gruntfile.js",
                     "./test/**",
-                    "./views/landing/js/*.js"
+                    "./public/src/landing/js/*.js"
                 ],
                 reporter: require('jshint-stylish')
             },
@@ -56,7 +56,8 @@ module.exports = function(grunt) {
         uglify: {
             dev: {
                 files: {
-                    'public/dist/js/app.min.js': ['public/src/js/**/*.js']
+                    'public/dist/js/app.min.js': ['public/src/js/**/*.js'],
+                    'public/dist/js/landing/index.min.js': ['public/src/landing/js/**/*.js']
                 }
             }
         },
@@ -65,7 +66,8 @@ module.exports = function(grunt) {
         cssmin: {
             target: {
                 files: {
-                    'public/dist/css/index.min.css': ['public/src/css/**/*.css']
+                    'public/dist/css/index.min.css': ['public/src/css/**/*.css'],
+                    'public/dist/css/landing/index.min.css': ['public/src/landing/css/**/*.css']
                 }
             }
         },

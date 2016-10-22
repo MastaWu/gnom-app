@@ -1,40 +1,25 @@
 # gnom-app #
 
-## Local Deploy ##
+## Full Dockerized Deploy ##
 
-In order to start app, you need to have nodejs installed.
+**NOTE: This requires that you have the config files placed in the api directory.**
 
-From command line, cd into gnom-app/api directory, and run:
+This is the full deploy for our app and our landing page. This ensures a stable environment for production and development.
 
-    npm install
+From command line, cd into the gnom-app/ directory, and run:
 
-If you want to run the app locally and test the app, run this command:
+    docker-compose up --build
 
-    grunt dev
+** This is sets up both images and links the containers together **
 
-**NOTE: This requires that you have the config files.**
-
-## Dockerized Deploy ##
-
-This app is dockerized, so you can run this in a docker container, if preferred.
-
-In order to start app, you need to have docker installed.
-
-From command line, cd into gnom-app/api directory, and run:
-
-    docker build -t gnom-app/api
-
-** This is creating the docker image **
-
-After the image has been built, check to see that gnom-app/api is not running yet.
+After the image has been built, check to see that everything is running.
 
     docker ps
 
-If it's not running, run it! ####
+To see the landing page in your browser:
 
-    docker run -p 8080:8080 -d gnom-app/api
+    localhost/
 
-If it is running, stop and remove the running gnom-app/api container.
+To see the main app page in your browser:
 
-    docker stop <container id>
-    docker rm <container id>
+    localhost/app
