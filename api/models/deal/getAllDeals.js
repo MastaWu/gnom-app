@@ -1,4 +1,6 @@
 // GET all deals available from the database.
+// Get images: http://stackoverflow.com/questions/28356737/retrieving-images-from-amazon-s3-bucket\
+// http://stackoverflow.com/questions/6975693/amazon-s3-access-image-by-url
 module.exports = function getAllDeals(req, res) {
     console.log("Getting all deal");
 

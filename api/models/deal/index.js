@@ -5,6 +5,7 @@ var getDeal = require('./getDeal');
 var updateDeal = require('./updateDeal');
 var createDeal = require('./createDeal');
 var deleteDeal = require('./deleteDeal');
+var upload = require('./uploadPicture');
 var requireAuth = require('../auth/checkAuthentication');
 var requireRole = require('../auth/requireRole');
 var userRole = require('../user/userRole');
@@ -16,7 +17,7 @@ deal.get('/all', getAllDeals);
 deal.get('/:id', getDeal);
 
 // Create a new deal in the database
-deal.post('/', requireAuth.checkAuth, requireRole.requireRole(userRole.restaurantOwner), createDeal);
+deal.post('/', requireAuth.checkAuth, requireRole.requireRole(userRole.restaurantOwner), upload.uploadImage.array(''), createDeal);
 
 // Update the deal in the database with the id from req. params
 deal.post('/:id', requireAuth.checkAuth, requireRole.requireRole(userRole.restaurantOwner), updateDeal);

@@ -1,4 +1,5 @@
 // CREATE (POST) deal where id is given from request parameters
+// http://stackoverflow.com/questions/17930204/simple-file-upload-to-s3-using-aws-sdk-and-node-express
 module.exports = function createDeal(req, res) {
     var database = require('../../database/database');
     var queryValues = [];

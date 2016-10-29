@@ -9,7 +9,8 @@
         'ngMessages',
         'ngStorage',
         'ngAnimate',
-        'satellizer'
+        'satellizer',
+        'ui.bootstrap'
     ])
         .config(config)
         .run(run);
@@ -67,6 +68,11 @@
                 url: '/app/login',
                 templateUrl: '/views/login.html',
                 controller: 'loginCtrl'
+            })
+            .state('dashboard', {
+                url: '/app/dashboard',
+                templateUrl: '/views/dashboard.html',
+                controller: 'dashboardCtrl'
             })
             .state('signup', {
                 url: '/app/signup',

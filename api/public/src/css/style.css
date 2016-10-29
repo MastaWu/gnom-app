@@ -27,7 +27,7 @@ a:hover {
 
 .navbar-brand {
     height: 50px;
-    padding: 0 15px;
+    padding: 0 20px;
     font-size: inherit;
     line-height: 50px;
 }
@@ -241,4 +241,76 @@ a:hover {
 #search-input-group input {
     border: 0;
     box-shadow: none;
+}
+
+.flexbox-parent {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align items in Main Axis */
+    align-items: stretch;
+    /* align items in Cross Axis */
+    align-content: stretch;
+    /* Extra space in Cross Axis */
+}
+
+.flexbox-item {
+    padding: 5px;
+}
+
+.flexbox-item-grow {
+    flex: 1;
+    /* same as flex: 1 1 auto; */
+}
+
+.fill-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* align items in Main Axis */
+    align-items: stretch;
+    /* align items in Cross Axis */
+    align-content: stretch;
+    /* Extra space in Cross Axis */
+}
+
+.fill-area-content {
+    padding: 5px;
+    /* Needed for when the area gets squished too far and there is content that can't be displayed */
+    overflow: hidden;
+}
+
+.detailed-panel-body {
+    height: 500px;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.detailed-card-hr {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.detailed-common-panel {
+    min-height: 100px;
+}
+
+.footer {
+    box-shadow:0 2px 5px 0 rgba(0,0,0,.26);
+    background-color:#ffffff;
+    width:100%;
+    height:100px;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+
+.detailed-payment-card-panel {
+    min-height: 240px;
+}
+
+.dashboard-add-deals-btn {
+    font-size: 33px;
+    padding: 18px 23px;
 }

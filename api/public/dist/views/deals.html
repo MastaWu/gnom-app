@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-10">
+                        <div id="search-input-group">
+                            <div class="input-group col-md-12 search-input">
+                                <input type="text" class="form-control" placeholder="   Search" ng-model="d"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="btn-group pull-right deal-view-type">
+                            <a ui-sref=".cards" class="btn btn-default" ng-class="{active: deal.$state.includes('deals.cards')}">
+                                <span class="glyphicon glyphicon-th-large"></span>
+                            </a>
+                            <a ui-sref=".lists" class="btn btn-default" ng-class="{active: deal.$state.includes('deals.lists')}">
+                                <span class="glyphicon glyphicon-th-list"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div ui-view></div>
+    </div>
+</div>
