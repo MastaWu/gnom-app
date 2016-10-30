@@ -1,6 +1,6 @@
 (function(){
     'use strict';
-    
+
     config.$inject = ['$httpProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', '$authProvider'];
     run.$inject = ['$rootScope', '$window', '$auth'];
     loginRequired.$inject = ['$q', '$location', '$auth'];
@@ -10,7 +10,9 @@
         'ngStorage',
         'ngAnimate',
         'satellizer',
-        'ui.bootstrap'
+        'ngSanitize',
+        'ui.bootstrap',
+        'ngFileUpload'
     ])
         .config(config)
         .run(run);
@@ -72,7 +74,22 @@
             .state('dashboard', {
                 url: '/app/dashboard',
                 templateUrl: '/views/dashboard.html',
-                controller: 'dashboardCtrl'
+                controller: 'dashboardCtrl',
+                controllerAs: 'dashboard'
+            })
+            .state('dashboard.addNewDeal', {
+                url: '/addNewDeal',
+                onEnter: ['$uibModal', '$state', function($uibModal, $state) {
+                    $uibModal.open({
+                        templateUrl: '/views/add-deal.html',
+                        controller: 'addDealCtrl'
+                    }).result.then(function() {
+                        $state.go('dashboard');
+                    }, function() {
+                        // change route after clicking Cancel button or clicking background
+                        $state.go('dashboard');
+                    });
+                }]
             })
             .state('signup', {
                 url: '/app/signup',
@@ -96,6 +113,20 @@
             scope: ['likes'],
             scopeDelimiter: '+',
             authorizationEndpoint: 'https://api.instagram.com/oauth/authorize'
+        });
+
+        $urlRouterProvider.rule(function($injector, $location) {
+
+            var path = $location.path();
+            var hasTrailingSlash = path[path.length-1] === '/';
+
+            if(hasTrailingSlash) {
+
+                //if last charcter is a slash, return the same url without the slash
+                var newPath = path.substr(0, path.length - 1);
+                return newPath;
+            }
+
         });
     }
 
