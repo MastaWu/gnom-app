@@ -82,7 +82,8 @@
                 onEnter: ['$uibModal', '$state', function($uibModal, $state) {
                     $uibModal.open({
                         templateUrl: '/views/add-deal.html',
-                        controller: 'addDealCtrl'
+                        controller: 'addDealCtrl',
+                        controllerAs: 'addDeal'
                     }).result.then(function() {
                         $state.go('dashboard');
                     }, function() {

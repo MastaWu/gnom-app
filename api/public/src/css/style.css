@@ -314,3 +314,7 @@ a:hover {
     font-size: 33px;
     padding: 18px 23px;
 }
+
+.file-upload-btn {
+    margin-bottom: 15px;
+}

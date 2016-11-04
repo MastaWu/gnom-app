@@ -17,6 +17,7 @@ var upload = multer({
         key: function (req, file, cb)
         {
             imageName = req.body.restaurantName + "_" + req.body.deal_name + "_" + Date.now() + ".jpg";
+            console.log(imageName);
             req.body.imageName = imageName;
             cb(null, req.body.imageName);
         }
@@ -24,3 +25,6 @@ var upload = multer({
 });
 
 exports.uploadImage = upload;
+
+// https://github.com/expressjs/multer/issues/301
+// http://stackoverflow.com/questions/32895968/multer-throwing-weird-error-while-uploading-file-via-ng-file-upload?noredirect=1&lq=1

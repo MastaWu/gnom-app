@@ -1,25 +1,44 @@
 <div class="modal-header">
     <h3 class="modal-title" id="modal-title">Add a deal</h3>
 </div>
+<hr style="margin-top: 0px; margin-bottom: 0px;"/>
 <div class="modal-body" id="modal-body">
-    <div class="btn btn-default" ngf-select ng-model="file" ngf-multiple="false">Select File</div>
-    on file change multiple:
-    <div class="btn btn-default" ngf-select="upload($files)" ngf-multiple="true">Select File</div>
-    Drop File:
-    <div ngf-drop ngf-select ng-model="files" class="drop-box"
-         ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
-         accept="image/*,application/pdf"
-         ngf-pattern="'image/*,application/pdf'">Drop pdfs or images here or click to upload</div>
-    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-    Files:
-    <ul>
-        <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
-    </ul>
-    Upload Log:
-    <pre>{{log}}</pre>
-</div>
-</div>
-<div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
-    <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+    <!--<div class="btn btn-default" ngf-select ng-model="file" ngf-multiple="false" name="deal">Select File</div>-->
+    <!--on file change multiple:-->
+    <!--Drop File:-->
+    <!--<div ngf-drop ngf-select ng-model="files" class="drop-box"-->
+    <!--ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"-->
+    <!--accept="image/*,application/pdf"-->
+    <!--ngf-pattern="'image/*,application/pdf'" name="deal">Drop pdfs or images here or click to upload</div>-->
+    <!--<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>-->
+    <form role="form">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Deal Name</label>
+            <input type="email" class="form-control"
+                   id="exampleInputEmail1" placeholder="Enter email"/>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Price</label>
+            <input type="password" class="form-control"
+                   id="exampleInputPassword1" placeholder="Password"/>
+        </div>
+        <div style="margin-bottom: 15px;" class="btn btn-default file-upload-btn" ngf-select="upload($files)" ngf-multiple="true" name="files">Select File</div>
+        <!--<div>-->
+            <!--<div class="percent">{{progress}}%</div>-->
+            <!--<div class="progress-bar">-->
+                <!--<div class="uploaded" ng-style="{'width': progress+'%'}"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <uib-progressbar style="height: 23px;" ng-show="progressVisible" max="max" value="dynamic"><span style="color:white; white-space:nowrap;">{{progress}}%</span></uib-progressbar>
+        <p>
+            Files:
+        <ul>
+            <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
+        </ul>
+        </p>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="addDeal.save()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="addDeal.cancel()">Cancel</button>
+        </div>
+    </form>
 </div>

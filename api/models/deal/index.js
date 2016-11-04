@@ -17,7 +17,7 @@ deal.get('/all', getAllDeals);
 deal.get('/:id', getDeal);
 
 // Create a new deal in the database
-deal.post('/', requireAuth.checkAuth, requireRole.requireRole(userRole.restaurantOwner), upload.uploadImage.array(''), createDeal);
+deal.post('/', requireAuth.checkAuth, requireRole.requireRole(userRole.restaurantOwner), upload.uploadImage.array('files'), createDeal);
 
 // Update the deal in the database with the id from req. params
 deal.post('/:id', requireAuth.checkAuth, requireRole.requireRole(userRole.restaurantOwner), updateDeal);

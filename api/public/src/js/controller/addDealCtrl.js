@@ -1,49 +1,54 @@
 (function() {
-    addDealController.$inject = ['$scope', 'Upload', '$timeout'];
+    addDealController.$inject = ['$scope', 'Upload', '$timeout', '$uibModalInstance'];
     angular.module('gnom-app')
         .controller('addDealCtrl', addDealController);
 
-    function addDealController($scope, Upload, $timeout) {
+    function addDealController($scope, Upload, $timeout, $uibModalInstance) {
         var vm = this;
 
-        $scope.$watch('files', function () {
-            $scope.upload($scope.files);
-        });
-        $scope.$watch('file', function () {
-            if ($scope.file !== null) {
-                $scope.files = [$scope.file];
-            }
-        });
+        // $scope.$watch('files', function () {
+        //     $scope.upload($scope.files);
+        // });
+        // $scope.$watch('file', function () {
+        //     if ($scope.file !== null) {
+        //         $scope.files = [$scope.file];
+        //     }
+        // });
         $scope.log = '';
 
         $scope.upload = function (files) {
+            $scope.files = files;
             if (files && files.length) {
-                for (var i = 0; i < files.length; i++) {
-                    var file = files[i];
-                    if (!file.$error) {
-                        Upload.upload({
-                            url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
-                            data: {
-                                username: $scope.username,
-                                file: file
-                            }
-                        }).then(function (resp) {
-                            $timeout(function() {
-                                $scope.log = 'file: ' +
-                                    resp.config.data.file.name +
-                                    ', Response: ' + JSON.stringify(resp.data) +
-                                    '\n' + $scope.log;
-                            });
-                        }, null, function (evt) {
-                            var progressPercentage = parseInt(100.0 *
-                                evt.loaded / evt.total);
-                            $scope.log = 'progress: ' + progressPercentage +
-                                '% ' + evt.config.data.file.name + '\n' +
-                                $scope.log;
-                        });
+                console.log(files);
+                Upload.upload({
+                    url: '/api/deal/',
+                    arrayKey: '',
+                    data: {
+                        files: files
                     }
-                }
+                }).then(function (response) {
+                    $timeout(function () {
+                        $scope.result = response.data;
+                    });
+                }, function (response) {
+                    if (response.status > 0) {
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                    }
+                }, function (evt) {
+                    // $scope.progress =
+                    //     Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                    $scope.progressVisible = true;
+                    $scope.progress = Math.round(evt.loaded * 100 / evt.total);
+                });
             }
+        };
+
+        vm.save = function() {
+            $uibModalInstance.close();
+        };
+
+        vm.cancel = function() {
+            $uibModalInstance.dismiss('cancel');
         };
     }
 })();
