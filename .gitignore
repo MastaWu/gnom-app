@@ -11,7 +11,7 @@
 .idea/jsLibraryMappings.xml
 .idea/
 config/
-public/dist/
+api/public/dist/
 
 # Sensitive or high-churn files:
 .idea/dataSources.ids
