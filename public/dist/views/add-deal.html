@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Add a deal</h3>
+</div>
+<hr style="margin-top: 0px; margin-bottom: 0px;"/>
+<div class="modal-body" id="modal-body">
+    <!--<div class="btn btn-default" ngf-select ng-model="file" ngf-multiple="false" name="deal">Select File</div>-->
+    <!--on file change multiple:-->
+    <!--Drop File:-->
+    <!--<div ngf-drop ngf-select ng-model="files" class="drop-box"-->
+    <!--ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"-->
+    <!--accept="image/*,application/pdf"-->
+    <!--ngf-pattern="'image/*,application/pdf'" name="deal">Drop pdfs or images here or click to upload</div>-->
+    <!--<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>-->
+    <form role="form">
+        <div class="form-group">
+            <label for="dealName">Deal Name</label>
+            <input ng-model="addDeal.dealInfo.dealName" type="text" class="form-control"
+                   id="dealName" placeholder="Braised Lamb Chops" required/>
+        </div>
+        <div class="form-group">
+            <label for="dealPrice">Price</label>
+            <input ng-model="addDeal.dealInfo.dealPrice" type="text" class="form-control"
+                   id="dealPrice" placeholder="$12.99" required/>
+        </div>
+        <input type="file" ngf-select ng-model="files" name="file" type="file" required>
+        <!--<div>-->
+        <!--<div class="percent">{{progress}}%</div>-->
+        <!--<div class="progress-bar">-->
+        <!--<div class="uploaded" ng-style="{'width': progress+'%'}"></div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <uib-progressbar style="height: 23px;" ng-show="progressVisible" max="max" value="dynamic"><span
+                style="color:white; white-space:nowrap;">{{progress}}%</span></uib-progressbar>
+        <p>
+            Files:
+        <ul>
+            <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
+        </ul>
+        </p>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="addDeal.upload(files)">Submit</button>
+            <button class="btn btn-warning" type="button" ng-click="addDeal.close()">Close</button>
+        </div>
+    </form>
+</div>

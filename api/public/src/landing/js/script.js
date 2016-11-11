@@ -224,7 +224,7 @@ $(document).ready(function() {
     
     $('#mc-form').ajaxChimp({
         callback: mailchimpCallback,
-        url: "https://themerocks.us9.list-manage.com/subscribe/post?u=f04c804868966b1b4509daa9b&amp;id=ad7b6aba65"
+        url: "//facebook.us13.list-manage.com/subscribe/post?u=9eb5d3f728b313c24bfb99292&amp;id=1ce8a991be"
     });
 
     function mailchimpCallback(resp) {

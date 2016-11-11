@@ -141,7 +141,7 @@ p {
     color: #f39c12;
 }
 .header {
-    background: url(landing/images/home.jpg);
+    background: url(home.jpg);
     background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -388,7 +388,7 @@ tuor:visited {
     height: auto;
 }
 .testimonial {
-    background: url(landing/images/testimonial.jpg);
+    background: url(testimonial.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -614,7 +614,7 @@ div.carousel-inner .item img {
 -----------------------------------------*/
 
 .fun_facts {
-    background: url(landing/images/fun_bg.jpg) no-repeat center;
+    background: url(fun_bg.jpg) no-repeat center;
     background-size: cover;
 }
 .fun_facts .section_overlay {
@@ -883,7 +883,7 @@ div.carousel-inner .item img {
 -----------------------------------------*/
 
 .subscribe {
-    background-image: url(landing/images/subscribe.jpg);
+    background-image: url(subscribe.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
