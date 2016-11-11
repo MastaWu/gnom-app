@@ -32,7 +32,8 @@ module.exports = function(grunt) {
                     "./dist/**",
                     "./Gruntfile.js",
                     "./test/**",
-                    "./public/src/landing/js/*.js"
+                    "./public/src/landing/js/*.js",
+                    "./public/src/landing/legacy/js/*.js"
                 ],
                 reporter: require('jshint-stylish')
             },
@@ -47,7 +48,7 @@ module.exports = function(grunt) {
             app: {
                 files: [{
                     expand: true,
-                    src: ['./public/src/**/*.js'],
+                    src: ['./public/src/**/*.js']
                 }]
             }
         },
@@ -56,8 +57,8 @@ module.exports = function(grunt) {
         uglify: {
             dev: {
                 files: {
-                    'public/dist/js/app.min.js': ['public/src/js/**/*.js'],
-                    'public/dist/js/landing/index.min.js': ['public/src/landing/js/**/*.js']
+                    'public/dist/js/app.min.js': ['public/src/js/**/*.js']
+                    //'public/dist/js/landing/index.min.js': ['public/src/landing/js/**/*.js']
                 }
             }
         },
@@ -66,8 +67,8 @@ module.exports = function(grunt) {
         cssmin: {
             target: {
                 files: {
-                    'public/dist/css/index.min.css': ['public/src/css/**/*.css'],
-                    'public/dist/css/landing/index.min.css': ['public/src/landing/css/**/*.css']
+                    'public/dist/css/index.min.css': ['public/src/css/**/*.css']
+                    //'public/dist/css/landing/index.min.css': ['public/src/landing/css/**/*.css']
                 }
             }
         },
@@ -77,7 +78,11 @@ module.exports = function(grunt) {
             main: {
                 files: [
                     { expand: true, cwd: 'views/', src: ['views/**'], dest: 'public/dist/'},
-                    { expand: true, cwd: 'public/src/', src: ['img/**'], dest: 'public/dist/'}
+                    { expand: true, cwd: 'public/src/', src: ['img/**'], dest: 'public/dist/'},
+                    { expand: true, cwd: 'public/src/', src: ['landing/css/**'], dest: 'public/dist/'},
+                    { expand: true, cwd: 'public/src/', src: ['landing/js/**'], dest: 'public/dist/'},
+                    { expand: true, cwd: 'public/src/', src: ['landing/fonts/**'], dest: 'public/dist/'},
+                    { expand: true, cwd: 'public/src/', src: ['landing/images/**'], dest: 'public/dist/'}
                 ]
             }
         },

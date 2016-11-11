@@ -7,7 +7,7 @@
     "url": ""
   },
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "grunt build --force && nodemon app.js",
     "start-test": "SET NODE_ENV=dev && node app.js",
     "test": "grunt dev"
   },

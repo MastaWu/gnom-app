@@ -16,8 +16,8 @@ var upload = multer({
         bucket: 'gnom-app',
         key: function (req, file, cb)
         {
-            imageName = req.body.restaurantName + "_" + req.body.deal_name + "_" + Date.now() + ".jpg";
-            console.log(imageName);
+            imageName = req.user.restaurant + "_" + req.body.dealInfo.dealName.replace(/ /g, "_") + "_" + Date.now() + ".jpg";
+            console.log("UploadImage - Image Name: " + imageName);
             req.body.imageName = imageName;
             cb(null, req.body.imageName);
         }

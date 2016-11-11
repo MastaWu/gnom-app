@@ -18,4 +18,6 @@ SELECT * FROM gnomApp.user;
 
 ALTER TABLE gnomApp.user add primary key(user_email);
 
+INSERT INTO gnomApp.restaurant_admin(restaurant_id, user_id) values (2, 19);
+
 SET SQL_SAFE_UPDATES = 0;

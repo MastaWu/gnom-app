@@ -12,6 +12,7 @@
 .idea/
 config/
 api/public/dist/
+api/node_modules
 
 # Sensitive or high-churn files:
 .idea/dataSources.ids

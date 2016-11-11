@@ -59,7 +59,16 @@ CREATE TABLE IF NOT EXISTS deal (
     PRIMARY KEY (deal_id),
     FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id)
 	);
-    
+
+CREATE TABLE IF NOT EXISTS deal_pictures (
+  deal_picture_id INT NOT NULL AUTO_INCREMENT,
+  deal_id INT NOT NULL,
+  deal_picture_link varchar(255),
+  deal_picture_upload_date DATE NOT NULL,
+  PRIMARY KEY (deal_picture_id),
+  FOREIGN KEY (deal_id) REFERENCES deal(deal_id)
+);
+
 CREATE TABLE IF NOT EXISTS deal_review (
 	deal_review_id INT NOT NULL AUTO_INCREMENT,
     deal_review VARCHAR(200) NOT NULL,

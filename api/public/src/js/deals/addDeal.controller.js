@@ -1,11 +1,12 @@
 (function() {
-    addDealController.$inject = ['$scope', 'Upload', '$timeout', '$uibModalInstance'];
+    addDealController.$inject = ['$scope', 'Upload', '$timeout', '$uibModalInstance', '$window'];
     angular.module('gnom-app')
         .controller('addDealCtrl', addDealController);
 
-    function addDealController($scope, Upload, $timeout, $uibModalInstance) {
+    function addDealController($scope, Upload, $timeout, $uibModalInstance, $window) {
         var vm = this;
 
+        vm.dealInfo = {};
         // $scope.$watch('files', function () {
         //     $scope.upload($scope.files);
         // });
@@ -15,21 +16,27 @@
         //     }
         // });
         $scope.log = '';
+        vm.upload = function (files) {
+            var currentUser = JSON.parse($window.localStorage.currentUser);
+            console.log("Restaurant: " + currentUser.restaurant);
+            vm.dealInfo.restaurant_name = currentUser.restaurant;
 
-        $scope.upload = function (files) {
-            $scope.files = files;
-            if (files && files.length) {
+            if (files) {
                 console.log(files);
-                Upload.upload({
+                files.upload = Upload.upload({
                     url: '/api/deal/',
                     arrayKey: '',
                     data: {
+                        dealInfo: vm.dealInfo,
                         files: files
                     }
-                }).then(function (response) {
+                });
+
+                files.upload.then(function (response) {
                     $timeout(function () {
                         $scope.result = response.data;
-                    });
+                        $uibModalInstance.close();
+                    }, 3000);
                 }, function (response) {
                     if (response.status > 0) {
                         $scope.errorMsg = response.status + ': ' + response.data;
@@ -43,12 +50,8 @@
             }
         };
 
-        vm.save = function() {
-            $uibModalInstance.close();
-        };
-
-        vm.cancel = function() {
-            $uibModalInstance.dismiss('cancel');
+        vm.close = function() {
+            $uibModalInstance.dismiss('close');
         };
     }
 })();

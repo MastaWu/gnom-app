@@ -10,7 +10,6 @@ RUN npm install
 RUN npm install -g grunt-cli
 
 COPY . /var/www/gnom-app
-RUN grunt build
 
 EXPOSE 8080
 CMD [ "npm", "start" ]

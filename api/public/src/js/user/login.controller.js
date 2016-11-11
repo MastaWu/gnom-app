@@ -22,7 +22,7 @@
                 .then(function(res) {
                     console.log(JSON.stringify(res.data));
                     $window.localStorage.currentUser = JSON.stringify(res.data.user);
-                    $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+                    $rootScope.currentUser = JSON.stringify($window.localStorage.currentUser);
                     $location.path('/');
                 })
                 .catch(function(res) {
