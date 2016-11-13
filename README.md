@@ -20,7 +20,7 @@ If you want Docker to run in the background, add -d to the command. Ex:
 
     or
 
-    docker-compose up -build -d
+    docker-compose up --build -d
 
 **This sets up both images and links the containers together**
 

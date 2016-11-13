@@ -628,7 +628,6 @@ div.carousel-inner .item img {
 .single_fun_facts i {
     color: #f39c12;
     font-size: 60px;
-    ;
 }
 .single_fun_facts h2 {
     color: #D7DADB;
@@ -890,13 +889,13 @@ div.carousel-inner .item img {
 }
 .subscribe .section_overlay {
     padding-bottom: 70px;
-    background: transparent
+    background-color: rgba(33, 33, 33, .75);
 }
 .subscribe .section_title h2{
 	color: #eaeaea;
 }
 .subscribe .section_title p{
-	color: #a4a4a4;
+	color: #eaeaea;
 }
 .subscribe_form {
     text-align: center;
